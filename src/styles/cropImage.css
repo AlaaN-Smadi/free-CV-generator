@@ -1,0 +1,18 @@
+/* <div className="img-container">
+                        <img ref={this.imageElement} src={this.props.image} alt="source" />
+                    </div>
+                    <img className="img-preview */
+
+.img-container{
+    width: 250px;
+    height: auto;
+}
+
+.img-container img{
+    width: 100%;
+}
+
+.img-preview{
+    width: 100px;
+    height: 100px;
+}

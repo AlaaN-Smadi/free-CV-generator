@@ -19,11 +19,82 @@
 .upload_Image{
     text-align: center;
     position: absolute;
+    z-index: 0;
     top: 35%;
-    left: 4%;
+    left: 25%;
 }
 
 .Personal_Image_Text{
     text-align: center;
     font-size: larger;
+}
+
+.personal_Image:hover .hoverSpan{
+    display: block;
+}
+
+.personal_Image:hover .upload_Image{
+    display: none;
+}
+.hoverSpan{
+    display: none;
+    position: absolute;
+    top:15%;
+    text-align: center;
+    font-size: large;
+
+    animation-name: showImage;
+    animation-duration: 0.5s;
+}
+.hoverSpan img{
+    width: 100%;
+    border-radius: 30px;
+}
+
+.personal_Image:hover .my_Image{
+    opacity: 0.35;
+}
+
+.input{
+    position: absolute;
+    /* bottom: -20
+px
+; */
+    width: 100%;
+    height: 100%;
+    background: blue;
+    border-radius: 100%;
+    z-index: 100;
+    opacity: 0;
+}
+.input:hover{
+    cursor: pointer;
+}
+
+.my_Image{
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+    border-radius: 100%;
+}
+
+@keyframes showImage{
+    0%{
+        top:19%;
+        opacity: 0.5;
+    }
+    100%{
+        top:15%;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .Personal_Image_Text{
+        font-size: 15px;
+    }
+    .hoverSpan{
+        font-size: 13px;
+
+    }
 }

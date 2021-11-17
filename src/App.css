@@ -1,4 +1,7 @@
 
+*{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 .App {
   text-align: center;
@@ -38,3 +41,21 @@
     transform: rotate(360deg);
   }
 }
+
+
+.main_Div{
+  background-image: url('https://images.pexels.com/videos/855785/free-video-855785.jpg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200');
+  background-repeat: no-repeat;
+
+  background-size:cover;
+}
+
+.CheckoutButton{
+  background: black;
+  /* position: fixed;
+  top: 10px;
+  left: 10px; */
+  width: 100px;
+  height: 100px;
+}
+
