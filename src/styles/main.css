@@ -108,17 +108,17 @@
 
 @media screen and (max-width: 400px) {
     .info_btn{
-        font-size: smaller;
+        font-size: 14px;
     }
     .add_info_btn{
-        font-size: smaller;
+        font-size: 14px;
     }
     .info_Title{
-        font-size: smaller;
+        font-size: 14px;
 
     }
     .info_data{
-        font-size: smaller;
+        font-size: 14px;
 
     }
     .CV_Infos_Title{

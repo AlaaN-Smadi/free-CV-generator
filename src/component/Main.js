@@ -216,9 +216,7 @@ class Main extends React.Component {
                                             </>
                                         }
 
-                                        <Button onClick={() => this.props.hideModalData()} variant="secondary">
-                                            Close
-                                        </Button>
+                                        
                                         <Button type="submit" variant="primary">
                                             Save Changes
                                         </Button>
