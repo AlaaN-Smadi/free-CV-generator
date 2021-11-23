@@ -14,7 +14,8 @@ class Main extends React.Component {
             index: 10,
             month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
             year: [],
-            feilds: []
+            feilds: [],
+
         }
     }
 
@@ -23,7 +24,7 @@ class Main extends React.Component {
             // if()
             let myArrData = []
             for (let i = 0; i < this.props.infos[this.props.index].data.length; i++) {
-                let myFeilds = Object.entries(this.props.infos[this.props.index].data[0])
+                let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
                 myArrData.push(myFeilds)
             }
             console.log(myArrData);
@@ -51,7 +52,7 @@ class Main extends React.Component {
         if (this.props.newDataAdded !== "Add new feild") {
             let myArrData = []
             for (let i = 0; i < this.props.infos[this.props.index].data.length; i++) {
-                let myFeilds = Object.entries(this.props.infos[this.props.index].data[0])
+                let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
                 myArrData.push(myFeilds)
             }
             console.log(myArrData);
@@ -61,6 +62,32 @@ class Main extends React.Component {
             })
 
         }
+    }
+    addObj = (head) => {
+        if (head == 'Experience' || head == 'Education' || head == 'Certificate') {
+            this.props.addObj(head)
+        } else {
+            this.props.addSkillsPersonal(head)
+        }
+        let myArrData = []
+        for (let i = 0; i < this.props.infos[this.props.index].data.length; i++) {
+            let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
+            myArrData.push(myFeilds)
+        }
+        console.log(myArrData);
+
+        let yearArr = []
+        for (let i = 1995; i < 2022; i++) {
+            yearArr.push(i)
+        }
+
+
+        this.setState({
+            feilds: myArrData,
+            year: yearArr,
+            infosMap: this.props.infos
+        })
+
     }
     render() {
 
@@ -88,7 +115,7 @@ class Main extends React.Component {
                             {/* <p className="CV_Infos_Title"> <b> Your Info </b> </p> */}
                             <p className="CV_Infos_Title"> <b> {this.props.newDataAdded} </b> </p>
 
-                            
+
 
                             <span>  </span>
                             {
@@ -125,27 +152,44 @@ class Main extends React.Component {
                                     <Form>
                                         {/* <p className="CV_Infos_Title">  </p> */}
                                         {
-                                            this.state.feilds.map((feild,indexFeild) => {
+                                            this.state.feilds.map((feild, indexFeild) => {
                                                 return (
                                                     <div key={indexFeild}>
+                                                        <hr className="formLabel" />
                                                         {
                                                             feild.map(data => {
                                                                 return (
                                                                     <div key={data[0]}>
-                                                                        {/* <Form.Group className="mb-3" id="formBasicEmail">
-                                                                        <Form.Label className="formLabel" htmlFor="feildName"> {data[0]} </Form.Label>
-                                                                        <Form.Control required defaultValue={data[1]} type="text" id="feildName" name="feildName" />
-
-                                                                        </Form.Group> */}
 
                                                                         {
                                                                             ((data[0] !== "About_Me") && (data[0] !== "Start_Date") && (data[0] !== "End_Date") && (data[0] !== "Date")) &&
                                                                             (
                                                                                 <>
                                                                                     {/* <br /> */}
-                                                                                    <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
-                                                                                        <Form.Control id={`${data[0]}`} name={`${data[0]}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
-                                                                                    </FloatingLabel>
+                                                                                    {
+                                                                                        ((data[0] !== "new_link") && (data[0] !== "new_Skill")) &&
+                                                                                        <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
+                                                                                            <Form.Control id={`${data[0]}`} name={`${data[0]}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
+                                                                                        </FloatingLabel>
+                                                                                    }
+                                                                                    {
+                                                                                        (data[0] == "new_link" || data[0] == "new_Skill" ) &&
+                                                                                        <>
+                                                                                            <Row className="g-2">
+                                                                                                <Col md>
+                                                                                                    <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
+                                                                                                        <Form.Control id={`${data[0]}`} name={`${data[0]}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
+                                                                                                    </FloatingLabel>
+                                                                                                </Col>
+                                                                                                <Col md>
+                                                                                                    <FloatingLabel id={`${data[1]}`} label={`${data[1]}`}>
+                                                                                                        <Form.Control id={`${data[1]}`} name={`${data[1]}`} defaultValue={`${data[1]}`} placeholder={`${data[1]}`} type="text" />
+                                                                                                    </FloatingLabel>
+                                                                                                </Col>
+                                                                                            </Row>
+                                                                                        </>
+                                                                                    }
+
                                                                                 </>
                                                                             )
                                                                         }
@@ -207,7 +251,7 @@ class Main extends React.Component {
                                                 {
                                                     (this.props.newDataAdded !== "Personal Profile") &&
                                                     <>
-                                                        <Button> Add new {this.props.newDataAdded} </Button>
+                                                        <Button onClick={() => this.addObj(this.props.newDataAdded)}> Add new {this.props.newDataAdded} </Button>
                                                         <br />
                                                         <br />
                                                     </>
@@ -216,7 +260,7 @@ class Main extends React.Component {
                                             </>
                                         }
 
-                                        
+
                                         <Button type="submit" variant="primary">
                                             Save Changes
                                         </Button>

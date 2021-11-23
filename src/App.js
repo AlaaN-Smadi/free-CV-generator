@@ -23,10 +23,10 @@ class App extends React.Component {
           head: 'Personal Details',
           data: [
             {
-              Name:"",
-              Phone:"",
-              Email:"",
-              Address:""
+              Name: "",
+              Phone: "",
+              Email: "",
+              Address: ""
             }
           ]
         },
@@ -34,7 +34,7 @@ class App extends React.Component {
           head: 'Personal Profile',
           data: [
             {
-              About_Me:""
+              About_Me: ""
             }
           ]
         },
@@ -42,12 +42,12 @@ class App extends React.Component {
           head: 'Experience',
           data: [
             {
-              position:"",
-              company:"",
-              Start_Date:"",
-              End_Date:"",
-              Technical_Skills:"",
-              description:""
+              position: "",
+              company: "",
+              Start_Date: "",
+              End_Date: "",
+              Technical_Skills: "",
+              description: ""
             }
           ]
         },
@@ -55,12 +55,12 @@ class App extends React.Component {
           head: 'Education',
           data: [
             {
-              degree:"",
-              university:"",
-              Start_Date:"",
-              End_Date:"",
-              Technical_Skills:"",
-              description:""
+              degree: "",
+              university: "",
+              Start_Date: "",
+              End_Date: "",
+              Technical_Skills: "",
+              description: ""
             }
           ]
         },
@@ -68,9 +68,9 @@ class App extends React.Component {
           head: 'Certificate',
           data: [
             {
-              name:"",
-              Date:"",
-              Technical_Skills:""
+              name: "",
+              Date: "",
+              Technical_Skills: ""
             }
           ]
         },
@@ -85,7 +85,7 @@ class App extends React.Component {
       addData: false,
       newDataAdded: 'Personal Details',
       newFeildAdded: 'Personal Details',
-      index:0
+      index: 0
     }
   }
 
@@ -121,11 +121,11 @@ class App extends React.Component {
     console.log(this.state.show);
   }
 
-  
+
   //  To show the form to add personal data
   addDataFunc = async (dataType, index) => {
     await this.setState({
-      index:index,
+      index: index,
       newDataAdded: dataType
     })
     console.log(dataType);
@@ -140,7 +140,7 @@ class App extends React.Component {
   addNewFeildModal = async () => {
     console.log("show Modal");
     await this.setState({
-      newFeildAdded:'Add new feild',
+      newFeildAdded: 'Add new feild',
       addData: !this.state.addData
     })
   }
@@ -153,10 +153,72 @@ class App extends React.Component {
     let myOldData = this.state.infos
     myOldData.push(myObj)
     this.setState({
-      infos:myOldData
+      infos: myOldData
     })
     console.log(this.state.infos);
   }
+
+  //  Add new object of data
+  addObj = async(head) => {
+    //  Skills'Certificate'Education'Experience'Personal Details
+    let myNewObj = {}
+    let index
+    let myStateData = this.state.infos
+    switch (head) {
+      case 'Experience':
+        myNewObj = {
+          position: "",
+          company: "",
+          Start_Date: "",
+          End_Date: "",
+          Technical_Skills: "",
+          description: ""
+        };
+        index = 2
+        break;
+      case 'Education':
+        myNewObj = {
+          degree: "",
+          university: "",
+          Start_Date: "",
+          End_Date: "",
+          Technical_Skills: "",
+          description: ""
+        }
+        index = 3
+        break;
+      case 'Certificate':
+        myNewObj = {
+          name: "",
+          Date: "",
+          Technical_Skills: ""
+        };
+        index = 4
+        break;
+      default:
+        break;
+    }
+
+    myStateData[index].data.push(myNewObj)
+    await this.setState({
+      infos:myStateData
+    }) 
+  }
+  addSkillsPersonal = async(head) => {
+    let myNewObj = {new_link:""}
+    let myStateData = this.state.infos
+    if(head == "Skills"){
+      myNewObj = {new_Skill:""}
+      myStateData[5].data.push(myNewObj)
+    }else{
+      myStateData[0].data.push(myNewObj)
+    }
+    await this.setState({
+      infos:myStateData
+    })
+    console.log(this.state.infos);
+  }
+
   render() {
 
     return (
@@ -177,7 +239,7 @@ class App extends React.Component {
 
         <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-        <Main index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc}/>
+        <Main addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
 
         <Footer />
