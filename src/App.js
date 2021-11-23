@@ -21,30 +21,61 @@ class App extends React.Component {
         // 'Personal Details', 'Personal Profile', 'Interests and Achievements', 'Education', 'Qualifications', 'Work Experience', 'References'
         {
           head: 'Personal Details',
-          data: []
+          data: [
+            {
+              Name:"",
+              Phone:"",
+              Email:"",
+              Address:""
+            }
+          ]
         },
         {
           head: 'Personal Profile',
-          data: []
+          data: [
+            {
+              About_Me:""
+            }
+          ]
+        },
+        {
+          head: 'Experience',
+          data: [
+            {
+              position:"",
+              company:"",
+              Start_Date:"",
+              End_Date:"",
+              Technical_Skills:"",
+              description:""
+            }
+          ]
         },
         {
           head: 'Education',
-          data: []
+          data: [
+            {
+              degree:"",
+              university:"",
+              Start_Date:"",
+              End_Date:"",
+              Technical_Skills:"",
+              description:""
+            }
+          ]
         },
         {
-          head: 'Interests and Achievements',
-          data: []
+          head: 'Certificate',
+          data: [
+            {
+              name:"",
+              Date:"",
+              Technical_Skills:""
+            }
+          ]
         },
         {
-          head: 'Qualifications',
-          data: []
-        },
-        {
-          head: 'Work Experience',
-          data: []
-        },
-        {
-          head: 'References',
+          head: 'Skills',
           data: []
         }
       ],
@@ -52,13 +83,13 @@ class App extends React.Component {
       test_Image: '',
       show: false,
       addData: false,
-      newDataAdded: ''
+      newDataAdded: 'Personal Details',
+      newFeildAdded: 'Personal Details',
+      index:0
     }
-
-
-
   }
 
+  // To upload Image and set it
   setImage = (a, b) => {
     if (b) {
       console.log(a);
@@ -80,7 +111,7 @@ class App extends React.Component {
     }
 
   }
-
+  //  Modal to set image
   showModal = async () => {
     console.log('--------------------');
     await this.setState({
@@ -90,22 +121,33 @@ class App extends React.Component {
     console.log(this.state.show);
   }
 
-  addDataFunc = async (dataType) => {
+  
+  //  To show the form to add personal data
+  addDataFunc = async (dataType, index) => {
     await this.setState({
-      newDataAdded: dataType,
-      addData: !this.state.addData
+      index:index,
+      newDataAdded: dataType
     })
     console.log(dataType);
   }
+
+  //  To show and hide the modal to add new feild
   hideDataFunc = async () => {
     await this.setState({
       addData: !this.state.addData
     })
   }
-
+  addNewFeildModal = async () => {
+    console.log("show Modal");
+    await this.setState({
+      newFeildAdded:'Add new feild',
+      addData: !this.state.addData
+    })
+  }
+  //  Function to add new feild
   addNewFeild = (feildName) => {
     let myObj = {
-      head: feildName,
+      head: `${feildName}_New`,
       data: []
     }
     let myOldData = this.state.infos
@@ -127,15 +169,15 @@ class App extends React.Component {
 
         }
         {
-          this.state.addData &&
-          <Modal_Data addNewFeild={this.addNewFeild} newDataAdded={this.state.newDataAdded} show={this.state.addData} hideModalData={this.hideDataFunc} />
+          (this.state.addData && (this.state.newFeildAdded == 'Add new feild')) &&
+          <Modal_Data infos={this.state.infos} addNewFeild={this.addNewFeild} newDataAdded={this.state.newFeildAdded} show={this.state.addData} hideModalData={this.hideDataFunc} />
         }
 
         <Header />
 
         <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-        <Main addDataFunc={this.addDataFunc} infos={this.state.infos} />
+        <Main index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc}/>
 
 
         <Footer />
