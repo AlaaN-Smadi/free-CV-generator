@@ -34,12 +34,12 @@ class CheckoutButton extends React.Component {
                             <img onClick={() => this.func()} className="checkout" src={`${notChecout}`} alt="checkout" />
 
                             <div className="downloadButton">
-                            <img src={`${downloadData}`} alt="data" />
+                                <img src={`${downloadData}`} alt="data" />
                                 <p className="checkoutP"> <b> Select Your CV Tamplate </b> 😊  </p>
                             </div>
 
-                            <div className="deleteButton">
-                            <img src={`${deleteData}`} alt="data" />
+                            <div onClick={()=>this.props.deleteAllDataAlert()} className="deleteButton">
+                                <img src={`${deleteData}`} alt="data" />
                                 <p className="deleteP"> <b> Delete Data  </b>😢 </p>
                             </div>
 

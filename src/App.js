@@ -9,7 +9,8 @@ import Personal_Image from './component/Personal_Image'
 import { Modal, Button } from 'react-bootstrap'
 import CropImage from './component/cropImage'
 import CheckoutButton from './component/CheckoutButton'
-import Modal_Data from './component/Modal_Data'
+import Modal_Data from './component/Modal_Data';
+import Swal from 'sweetalert2'
 
 
 class App extends React.Component {
@@ -89,6 +90,25 @@ class App extends React.Component {
     }
   }
 
+  // Add data into my storage
+  addLocally = async () => {
+    localStorage.removeItem("myStoreData")
+    localStorage.setItem("myStoreData",JSON.stringify(this.state.infos))
+  }
+
+  async componentDidMount(){
+    let mySavedData = JSON.parse(localStorage.getItem("myStoreData"))
+    if(mySavedData){
+      await this.setState({
+        infos: mySavedData
+      })
+      console.log(this.state.infos);
+    }else{
+      // this.state.infos.JSON.tos
+      this.addLocally()
+    }
+  }
+
   // To upload Image and set it
   setImage = (a, b) => {
     if (b) {
@@ -148,7 +168,12 @@ class App extends React.Component {
   addNewFeild = (feildName) => {
     let myObj = {
       head: `${feildName}_New`,
-      data: []
+      data: [
+        {
+          name: "",
+          descreption: ""
+        }
+      ]
     }
     let myOldData = this.state.infos
     myOldData.push(myObj)
@@ -156,10 +181,11 @@ class App extends React.Component {
       infos: myOldData
     })
     console.log(this.state.infos);
+    this.addLocally()
   }
 
   //  Add new object of data
-  addObj = async(head) => {
+  addObj = async (head) => {
     //  Skills'Certificate'Education'Experience'Personal Details
     let myNewObj = {}
     let index
@@ -201,22 +227,87 @@ class App extends React.Component {
 
     myStateData[index].data.push(myNewObj)
     await this.setState({
-      infos:myStateData
-    }) 
+      infos: myStateData
+    })
   }
-  addSkillsPersonal = async(head) => {
-    let myNewObj = {new_link:""}
+  addSkillsPersonal = async (head) => {
+    let myNewObj = { new_link: "" }
     let myStateData = this.state.infos
-    if(head == "Skills"){
-      myNewObj = {new_Skill:""}
+    if (head == "Skills") {
+      myNewObj = { new_Skill: "" }
       myStateData[5].data.push(myNewObj)
-    }else{
+    } else {
       myStateData[0].data.push(myNewObj)
     }
     await this.setState({
-      infos:myStateData
+      infos: myStateData
     })
     console.log(this.state.infos);
+  }
+  addNewObjToFeild = async (index) => {
+    let myArr = this.state.infos
+    let newObj = {
+      name: "",
+      descreption: ""
+    }
+    myArr[index].data.push(newObj)
+    await this.setState({
+      infos: myArr
+    })
+
+  }
+  // Delete All data and reset app
+  deleteAllDataAlert = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteAllData()
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        ).then(()=>{
+          window.location.reload(false)
+        })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
+  deleteAllData = () => {
+    localStorage.removeItem("myStoreData");
+    
+  }
+  //  delete object of data
+  deleteObj = async (index, objectIndex) => {
+    let myArr = this.state.infos
+    console.log(myArr[index].data[objectIndex])
+    myArr[index].data.splice(objectIndex, 1);
+    await this.setState({
+      infos: myArr
+    })
   }
 
   render() {
@@ -239,12 +330,12 @@ class App extends React.Component {
 
         <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-        <Main addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
+        <Main deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
 
         <Footer />
 
-        <CheckoutButton downloadFunc={this.downloadFunc} download={this.props.download} />
+        <CheckoutButton deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
 
 
       </div>

@@ -27,11 +27,6 @@ px
     border-radius: 100%;
     position: relative;
 }
-.checkoutSections img:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
-
 
 .deleteButton{
     /* background-color: black; */
@@ -52,6 +47,13 @@ px
 .deleteButton img{
     width: 100%;
 }
+
+.checkoutSections .deleteButton:hover, .downloadButton:hover, .checkout:hover {
+    cursor: pointer;
+    opacity: 0.80;
+    background-color: aquamarine;
+}
+
 .downloadButton{
     background-color: black;
     z-index: 50;
