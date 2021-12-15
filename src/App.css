@@ -33,6 +33,20 @@
   color: #61dafb;
 }
 
+
+.formsContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: url('https://images.pexels.com/videos/855785/free-video-855785.jpg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200');
+  background-repeat: no-repeat;
+
+  background-size:cover;
+  animation-name: resumeAnimation;
+  animation-duration: 1.5s;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,7 +55,14 @@
     transform: rotate(360deg);
   }
 }
-
+@keyframes resumeAnimation{
+  0%{
+      top: 100%;
+  }
+  100%{
+      top: 0;
+  }
+}
 
 .main_Div{
   background-image: url('https://images.pexels.com/videos/855785/free-video-855785.jpg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200');

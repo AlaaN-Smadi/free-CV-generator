@@ -11,6 +11,7 @@ import CropImage from './component/cropImage'
 import CheckoutButton from './component/CheckoutButton'
 import Modal_Data from './component/Modal_Data';
 import Swal from 'sweetalert2'
+import DownloadResume from './component/downloadResume'
 
 
 class App extends React.Component {
@@ -58,8 +59,8 @@ class App extends React.Component {
             {
               degree: "",
               university: "",
-              Start_Date: "",
-              End_Date: "",
+              Start__Date: "",
+              End__Date: "",
               Technical_Skills: "",
               description: ""
             }
@@ -86,26 +87,35 @@ class App extends React.Component {
       addData: false,
       newDataAdded: 'Personal Details',
       newFeildAdded: 'Personal Details',
-      index: 0
+      index: 0,
+      download: false
     }
   }
 
   // Add data into my storage
   addLocally = async () => {
     localStorage.removeItem("myStoreData")
-    localStorage.setItem("myStoreData",JSON.stringify(this.state.infos))
+    localStorage.setItem("myStoreData", JSON.stringify(this.state.infos))
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     let mySavedData = JSON.parse(localStorage.getItem("myStoreData"))
-    if(mySavedData){
+    let image = JSON.parse(localStorage.getItem("image"))
+
+    if (mySavedData) {
       await this.setState({
         infos: mySavedData
       })
       console.log(this.state.infos);
-    }else{
+    } else {
       // this.state.infos.JSON.tos
       this.addLocally()
+    }
+
+    if (image) {
+      await this.setState({
+        image: image.img
+      })
     }
   }
 
@@ -128,6 +138,8 @@ class App extends React.Component {
         show: !this.state.show
       })
       console.log("this.state.image");
+      let imageObject = { img: a }
+      localStorage.setItem("image", JSON.stringify(imageObject))
     }
 
   }
@@ -229,9 +241,10 @@ class App extends React.Component {
     await this.setState({
       infos: myStateData
     })
+    this.addLocally()
   }
   addSkillsPersonal = async (head) => {
-    let myNewObj = { new_link: "" }
+    let myNewObj = { new_data: "" }
     let myStateData = this.state.infos
     if (head == "Skills") {
       myNewObj = { new_Skill: "" }
@@ -243,6 +256,7 @@ class App extends React.Component {
       infos: myStateData
     })
     console.log(this.state.infos);
+    this.addLocally()
   }
   addNewObjToFeild = async (index) => {
     let myArr = this.state.infos
@@ -254,7 +268,7 @@ class App extends React.Component {
     await this.setState({
       infos: myArr
     })
-
+    this.addLocally()
   }
   // Delete All data and reset app
   deleteAllDataAlert = () => {
@@ -281,7 +295,7 @@ class App extends React.Component {
           'Deleted!',
           'Your file has been deleted.',
           'success'
-        ).then(()=>{
+        ).then(() => {
           window.location.reload(false)
         })
       } else if (
@@ -298,7 +312,8 @@ class App extends React.Component {
   }
   deleteAllData = () => {
     localStorage.removeItem("myStoreData");
-    
+    localStorage.removeItem("image");
+
   }
   //  delete object of data
   deleteObj = async (index, objectIndex) => {
@@ -308,6 +323,28 @@ class App extends React.Component {
     await this.setState({
       infos: myArr
     })
+    this.addLocally()
+  }
+  // Submit Form
+  submitForm = async (data, index) => {
+    let myDataArr = this.state.infos
+    myDataArr[index].data = data
+    await this.setState({
+      infos: myDataArr
+    })
+    this.addLocally()
+    Swal.fire({
+      icon: 'success',
+      title: 'Saved',
+      text: 'Your data successfully saved 🥰',
+    })
+  }
+
+  // Go to download page
+  downloadPage = async () => {
+    await this.setState({
+      download: !this.state.download
+    })
   }
 
   render() {
@@ -315,28 +352,39 @@ class App extends React.Component {
     return (
       <div className="main_Div">
 
+        {
+          !this.state.download &&
+          
+          <div className='formsContainer'>
+
+            {
+              this.state.show &&
+              <CropImage setImage={this.setImage} image={this.state.image} hide={this.showModal} show={this.state.show} />
+
+            }
+            {
+              (this.state.addData && (this.state.newFeildAdded == 'Add new feild')) &&
+              <Modal_Data infos={this.state.infos} addNewFeild={this.addNewFeild} newDataAdded={this.state.newFeildAdded} show={this.state.addData} hideModalData={this.hideDataFunc} />
+            }
+
+            <Header />
+
+            <Personal_Image setImage={this.setImage} image={this.state.image} />
+
+            <Main submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
+
+
+            <Footer />
+
+            <CheckoutButton downloadPage={this.downloadPage} deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
+
+          </div>
+        }
 
         {
-          this.state.show &&
-          <CropImage setImage={this.setImage} image={this.state.image} hide={this.showModal} show={this.state.show} />
-
+          this.state.download &&
+          <DownloadResume downloadPage={this.downloadPage} />
         }
-        {
-          (this.state.addData && (this.state.newFeildAdded == 'Add new feild')) &&
-          <Modal_Data infos={this.state.infos} addNewFeild={this.addNewFeild} newDataAdded={this.state.newFeildAdded} show={this.state.addData} hideModalData={this.hideDataFunc} />
-        }
-
-        <Header />
-
-        <Personal_Image setImage={this.setImage} image={this.state.image} />
-
-        <Main deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
-
-
-        <Footer />
-
-        <CheckoutButton deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
-
 
       </div>
     )

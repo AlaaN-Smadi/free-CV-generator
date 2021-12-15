@@ -4,6 +4,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useState } from 'react';
 import "../styles/Header.css"
+import logo from "../image/logo_Test.png"
 
 
 
@@ -15,7 +16,10 @@ function ToggleButtonExample() {
     return (
 
         <div className="nav_Bar">
-            <div className="logo"></div>
+            <div className="logo">
+            {/* src/image/logo_Test.png */}
+                <img src={logo} alt="logo" />
+            </div>
 
             {/* <div className="main_bar">
 

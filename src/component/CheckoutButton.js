@@ -33,7 +33,7 @@ class CheckoutButton extends React.Component {
                         <>
                             <img onClick={() => this.func()} className="checkout" src={`${notChecout}`} alt="checkout" />
 
-                            <div className="downloadButton">
+                            <div onClick={()=>this.props.downloadPage()} className="downloadButton">
                                 <img src={`${downloadData}`} alt="data" />
                                 <p className="checkoutP"> <b> Select Your CV Tamplate </b> 😊  </p>
                             </div>

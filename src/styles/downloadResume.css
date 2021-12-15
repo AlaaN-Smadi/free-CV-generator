@@ -1,0 +1,112 @@
+
+.close{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: antiquewhite;
+    padding: 7px;
+    font-family: cursive;
+    border-radius: 6px;
+    border: 1px solid darkgrey;
+}
+.close:hover{
+    cursor: pointer;
+    background: rgb(224, 182, 127);
+    transition: 1s;
+}
+
+.logoContainer{
+    position: absolute;
+  width: 115px;
+  height: 50px;
+  /* background-color: black; */
+  /* background-image: url("../image/logo_Test.png"); */
+  top: 25px;
+  left: 25px;
+}
+.logoContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.mainResumeContainer{
+    
+    width: 100%;
+    padding-bottom: 150px;
+    background-color: rgb(32, 43, 80);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: resumeAnimation;
+    animation-duration: 1.5s;
+}
+
+.resumeInfoContainer{
+    /* position: absolute; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 21.6cm;
+    height: 100px;
+    background: bisque;
+    margin-top: 7.5cm;
+}
+
+.resumeTypeContainer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    top: 5cm;
+}
+.resume{
+    width: 4.5cm;
+    height: 6cm;
+    border-radius: 5px;
+    background: wheat;
+}
+.resume:hover{
+    cursor: pointer;
+    border: 5px solid rgb(69, 199, 199);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+
+.buttonsContainer{
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+.button{
+    background: antiquewhite;
+    padding: 7px;
+    font-family: cursive;
+    border-radius: 6px;
+    border: 1px solid darkgrey;
+
+}
+.button:hover{
+    cursor: pointer;
+    background: rgb(224, 182, 127);
+    transition: 1s;
+}
+@media screen and (max-width: 25.5cm) {
+    .mainResumeContainer{
+        width: 25.5cm;
+    }
+}
+
+
+@keyframes resumeAnimation{
+    0%{
+        top: 100%;
+    }
+    100%{
+        top: 0;
+    }
+}
