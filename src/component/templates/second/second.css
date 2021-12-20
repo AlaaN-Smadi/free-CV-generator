@@ -1,7 +1,8 @@
 .secondpageContainer{
     position: relative;
     background-color: rgb(255, 255, 255);
-    
+    min-height: 25cm;
+
     padding-bottom: 30px;
 
 }
