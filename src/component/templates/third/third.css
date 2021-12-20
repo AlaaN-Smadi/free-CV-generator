@@ -1,0 +1,173 @@
+.thirdpageContainer{
+    position: relative;
+    background-color: beige;
+    
+    padding-bottom: 30px;
+
+}
+
+.thirdprofileImage{
+    width: 4.5cm;
+    border-radius: 100%;
+    
+}
+
+.thirduserName{
+    position: absolute;
+    line-height: 5cm;
+    font-size: xx-large;
+    text-align: center;
+    margin-left: auto;
+    background: #5b1c19;
+    font-family:perpetua ;
+    width: 100%;
+    color: beige;
+}
+
+.thirdleftAsid{
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    width: 6.15cm;
+    z-index: 10;
+    font-size: 12px;
+    height: 100%;
+    color: black;
+    background: #ccbdb2;
+    margin-left: 0.3cm;
+    padding: 0.5cm;
+}
+
+.thirdrightAsid{
+    /* padding-top: 25px; */
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 30%;
+    font-size: 12px;
+    color: black;
+    padding-top: 5cm;
+    padding-left: 0.7cm;
+    padding-right: 0.7cm;
+}
+
+
+.thirdheadOfFeild{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-bottom: -20px;
+    margin-top: 25px;
+}
+.thirdheadOfLeftFeild{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-top: 25px;
+    background: #5b1c19;
+    padding: 3px;
+    color: beige;
+}
+
+
+.thirdtitleOfPosition{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.thirdperiodOfPosition{
+    display: inline-block;
+    float: right;
+}
+
+
+
+.thirdtitleOfEducation{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.thirdperiodOfEducation{
+    display: inline-block;
+    float: right;
+}
+
+.thirddescriptionOfEducation{
+    margin-bottom: 20px;
+}
+
+
+
+
+.thirdcertificateName{
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.thirdcertificateDate{
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+}
+.thirdcertificateSkill{
+    display: inline-block;
+    margin-top: -12px;
+}
+
+
+
+.thirdnewName{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+}
+.thirdnewDesc{
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 1px;
+}
+
+.thirdinnerNewItems{
+    margin-right: 50px;
+
+}
+.thirdnewContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.thirdcontactInfosContainer p{
+    margin-bottom: 8px;
+}
+.thirdcontactInfosContainer a{
+    line-height: 5px;
+    margin-bottom: 8px;
+}
+.thirdcontactInfosContainer a p{
+    margin-bottom: 8px;
+}
+.thirdcontactInfosContainer a span{
+    margin-bottom: 8px;
+}
+
+.thirdskillOfMine{
+    
+    margin-bottom: 5px;
+}
+
+.thirdmyNote{
+    width: 10px;
+    height: 10px;
+    background: #720000;
+    display: inline-block;
+    margin-right: 3.5px;
+    border-radius: 100%;
+}
+
+
+.thirdnewPosition{
+    margin-top: 15px;
+}
+
+@font-face {
+    font-family: perpetua;
+    src: url(../fonts/perpetua/PERTILI.TTF);
+  }

@@ -1,0 +1,151 @@
+.secondpageContainer{
+    position: relative;
+    background-color: beige;
+    
+    padding-bottom: 30px;
+
+}
+
+.secondprofileImage{
+    width: 4.5cm;
+    border-radius: 100%;
+    
+}
+
+.seconduserName{
+    position: absolute;
+    line-height: 3cm;
+    font-size: xx-large;
+    text-align: center;
+    margin-left: auto;
+    background: rgb(32, 43, 80);
+    font-family:perpetua ;
+    width: 100%;
+    color: beige;
+}
+
+.secondleftAsid{
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    width: 6.15cm;
+    z-index: 10;
+    font-size: 12px;
+    height: 100%;
+    color: black;
+    background: #dbdbdd;
+    margin-left: 0.3cm;
+    padding: 0.5cm;
+}
+
+.secondrightAsid{
+    /* padding-top: 25px; */
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 30%;
+    font-size: 12px;
+    color: black;
+    padding-top: 3cm;
+    padding-left: 0.7cm;
+    padding-right: 0.7cm;
+}
+
+
+.secondheadOfFeild{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-bottom: -20px;
+    margin-top: 25px;
+}
+
+
+
+.secondtitleOfPosition{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.secondperiodOfPosition{
+    display: inline-block;
+    float: right;
+}
+
+
+
+.secondtitleOfEducation{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.secondperiodOfEducation{
+    display: inline-block;
+    float: right;
+}
+
+.seconddescriptionOfEducation{
+    margin-bottom: 20px;
+}
+
+/* .secondcontactInfosContainer p{
+    margin-bottom: -15px;
+} */
+
+
+.secondcertificateName{
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.secondcertificateDate{
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+}
+.secondcertificateSkill{
+    display: inline-block;
+    margin-top: -12px;
+}
+
+
+
+.secondnewName{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+}
+.secondnewDesc{
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 1px;
+}
+
+.secondinnerNewItems{
+    margin-right: 50px;
+
+}
+.secondnewContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.secondmyNote{
+    width: 10px;
+    height: 10px;
+    background: rgb(32, 43, 80);
+    display: inline-block;
+    margin-right: 3.5px;
+    border-radius: 100%;
+}
+.secondskillOfMine{
+    
+    margin-bottom: 5px;
+}
+
+.secondnewPosition{
+    margin-top: 15px;
+}
+
+@font-face {
+    font-family: perpetua;
+    src: url(../fonts/perpetua/PERTILI.TTF);
+  }

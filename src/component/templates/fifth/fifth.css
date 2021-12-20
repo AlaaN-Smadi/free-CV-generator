@@ -1,0 +1,143 @@
+.fifthpageContainer{
+    position: relative;
+    background-color: beige;
+    
+    padding-bottom: 30px;
+
+}
+
+.fifthleftAsid{
+    padding-left: 0.8cm;
+    padding-right: 0.8cm;
+    padding-bottom: 0.8cm;
+    font-size: 12px;
+    width: 33%;
+    height: 100%;
+    position: absolute;
+    background: #dcdcdc;
+    float: left;
+}
+
+.fifthprofileImage{
+    width: 5.5cm;
+    margin-top: 0.5cm;
+    margin-bottom: 0.5cm;
+}
+
+.fifthrightAsid{
+    padding: 0.8cm;
+    font-size: 12px;
+    width: 67%;
+    background: rgb(247, 247, 233);
+    margin-left: 33%;
+}
+.fifthuserName{
+    font-size: x-large;
+    font-family: perpetua;
+    margin-top: 1.5cm;
+}
+.fifthcontactInfosContainer p{
+    margin-bottom: 8px;
+}
+.fifthcontactInfosContainer a{
+    line-height: 5px;
+    margin-bottom: 8px;
+}
+.fifthcontactInfosContainer a p{
+    margin-bottom: 8px;
+}
+.fifthcontactInfosContainer a span{
+    margin-bottom: 8px;
+}
+
+.fifthheadOfFeild{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-bottom: -20px;
+    margin-top: 25px;
+}
+
+
+.fifthskillOfMine{
+    display: inline-block;
+    margin-right: 3px;
+}
+
+
+.fifthtitleOfPosition{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.fifthperiodOfPosition{
+    display: inline-block;
+    float: right;
+}
+
+
+
+.fifthtitleOfEducation{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.fifthperiodOfEducation{
+    display: inline-block;
+    float: right;
+}
+
+.fifthdescriptionOfEducation{
+    margin-bottom: 20px;
+}
+
+
+
+.fifthcertificateName{
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.fifthcertificateDate{
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+}
+.fifthcertificateSkill{
+    display: inline-block;
+    margin-top: -12px;
+}
+
+
+
+.fifthnewName{
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.fifthnewDesc{
+    margin-bottom: 1px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.fifthinnerNewItems{
+    margin-right: 50px;
+    
+
+}
+.fifthnewContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.fifthnewPosition{
+    margin-top: 15px;
+}
+
+@font-face {
+    font-family: perpetua;
+    src: url(../fonts/perpetua/PERTILI.TTF);
+  }

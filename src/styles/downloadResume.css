@@ -1,4 +1,6 @@
 
+
+
 .close{
     position: absolute;
     top: 20px;
@@ -23,17 +25,21 @@
   /* background-image: url("../image/logo_Test.png"); */
   top: 25px;
   left: 25px;
+
 }
 .logoContainer img{
     width: 100%;
     height: 100%;
+}
+.logoContainer:hover{
+    cursor: pointer;
 }
 
 .mainResumeContainer{
     
     width: 100%;
     padding-bottom: 150px;
-    background-color: rgb(32, 43, 80);
+    background-color: rgb(182, 182, 182);
     position: absolute;
     top: 0;
     left: 0;
@@ -46,7 +52,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 21.6cm;
-    height: 100px;
     background: bisque;
     margin-top: 7.5cm;
 }
@@ -58,19 +63,11 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     top: 5cm;
+    margin-left: 2cm;
+    margin-right: 2cm;
+
 }
-.resume{
-    width: 4.5cm;
-    height: 6cm;
-    border-radius: 5px;
-    background: wheat;
-}
-.resume:hover{
-    cursor: pointer;
-    border: 5px solid rgb(69, 199, 199);
-    border-radius: 10px;
-    transition: 0.5s;
-}
+
 
 
 .buttonsContainer{
@@ -95,9 +92,9 @@
     background: rgb(224, 182, 127);
     transition: 1s;
 }
-@media screen and (max-width: 25.5cm) {
+@media screen and (max-width: 26.5cm) {
     .mainResumeContainer{
-        width: 25.5cm;
+        width: 26.5cm;
     }
 }
 

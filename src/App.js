@@ -49,7 +49,7 @@ class App extends React.Component {
               Start_Date: "",
               End_Date: "",
               Technical_Skills: "",
-              description: ""
+              Description: ""
             }
           ]
         },
@@ -61,7 +61,7 @@ class App extends React.Component {
               university: "",
               Start__Date: "",
               End__Date: "",
-              Technical_Skills: "",
+              Technical__Skills: "",
               description: ""
             }
           ]
@@ -72,7 +72,7 @@ class App extends React.Component {
             {
               name: "",
               Date: "",
-              Technical_Skills: ""
+              Technical_skills: ""
             }
           ]
         },
@@ -88,7 +88,8 @@ class App extends React.Component {
       newDataAdded: 'Personal Details',
       newFeildAdded: 'Personal Details',
       index: 0,
-      download: false
+      download: false,
+      dataToShowInForm:[]
     }
   }
 
@@ -158,7 +159,8 @@ class App extends React.Component {
   addDataFunc = async (dataType, index) => {
     await this.setState({
       index: index,
-      newDataAdded: dataType
+      newDataAdded: dataType,
+      dataToShowInForm: this.state.infos[index].data
     })
     console.log(dataType);
   }
@@ -182,8 +184,8 @@ class App extends React.Component {
       head: `${feildName}_New`,
       data: [
         {
-          name: "",
-          descreption: ""
+          name: "Title",
+          descreption: "Description"
         }
       ]
     }
@@ -210,7 +212,7 @@ class App extends React.Component {
           Start_Date: "",
           End_Date: "",
           Technical_Skills: "",
-          description: ""
+          Description: ""
         };
         index = 2
         break;
@@ -218,9 +220,9 @@ class App extends React.Component {
         myNewObj = {
           degree: "",
           university: "",
-          Start_Date: "",
-          End_Date: "",
-          Technical_Skills: "",
+          Start__Date: "",
+          End__Date: "",
+          Technical__Skills: "",
           description: ""
         }
         index = 3
@@ -229,7 +231,7 @@ class App extends React.Component {
         myNewObj = {
           name: "",
           Date: "",
-          Technical_Skills: ""
+          Technical_skills: ""
         };
         index = 4
         break;
@@ -371,7 +373,7 @@ class App extends React.Component {
 
             <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-            <Main submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
+            <Main dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
 
             <Footer />

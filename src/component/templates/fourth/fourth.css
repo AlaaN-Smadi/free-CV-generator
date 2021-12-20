@@ -1,0 +1,198 @@
+.fourthpageContainer{
+    position: relative;
+    background-color: beige;
+    
+    padding-bottom: 30px;
+
+}
+
+.fourthHeader{
+    height: 4.75cm;
+    text-align: center;
+    line-height: 4.75cm;
+    font-size: 30px;
+    background: black;
+    color: aliceblue;
+    border-bottom: 5px solid #720000;
+    font-family: perpetua;
+    margin-bottom: 1cm;
+}
+
+.fourthlowerSection{
+    position: relative;
+    padding-bottom: 0.5cm;
+}
+.fourthImoji{
+    width: 5px;
+    padding: 3px;
+    padding-left: 4px;
+    color: blanchedalmond;
+    margin-top: 1px;
+    background: #720000;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.fourthImoji b{
+    z-index: 100;
+}
+.fourthline{
+    color: #720000;
+    height: 2px;
+}
+.fourthheadOfFeild{
+    display: block;
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-top: 15px;
+    color: #720000;
+}
+.fourthleftAsid .fourthheadOfFeild{
+    margin-bottom: 12px;
+}
+.test{
+    margin-top: 0px;
+}
+
+.fourthleftAsid{
+    width: 33%;
+    /* background: aliceblue; */
+    padding-left: 0.5cm;
+    padding-right: 0.5cm;
+    border-right: 1px solid #720000;
+    font-size: 12px;
+    height: 100%;
+    position: absolute;
+    
+    margin-bottom: 0.2cm;
+    font-family: 'Times New Roman', Times, serif;
+}
+.foruthrightAsid{
+    width: 66%;
+    margin-left: 33.5%;
+    padding-left: 0.5cm;
+    padding-right: 0.5cm;
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 0.2cm;
+}
+
+
+/*  */
+/*  */
+.fourthMyJobContainer{
+    display: flex;
+    margin-top: 15px;
+}
+.fourthtitleOfPosition{
+    /* display: inline-block; */
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.fourthperiodOfPosition{
+    /* display: inline-block; */
+    float: left;
+}
+
+.fourthleftEx{
+    width: 33%;
+    display: grid;
+    align-content: space-between;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.fourthrightEx{
+    width: 66%;
+}
+
+.fourthcertificateName{
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.fourthcertificateDate{
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+}
+.fourthcertificateSkill{
+    display: inline-block;
+    margin-top: -12px;
+}
+.fourthskillOfMine{
+    
+    margin-bottom: 5px;
+}
+.myNote{
+    width: 10px;
+    height: 10px;
+    background: #720000;
+    display: inline-block;
+    margin-right: 3.5px;
+    border-radius: 100%;
+}
+.fourthcontactInfos{
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+.fourthcontactInfos p{
+    margin-bottom: 2px;
+    text-decoration: none;
+    color: black;    
+}
+
+.fourthNewContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/*  */
+/*  */
+.fourthtitleOfEducation{
+    /* display: inline-block; */
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.fourthperiodOfEducation{
+    /* display: inline-block; */
+    float: left;
+}
+.fourthdescriptionOfEducation{
+    margin-bottom: 20px;
+}
+.fourthUneversityContainer{
+    display: flex;
+}
+.fourthnewName{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+}
+.fourthnewDesc{
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 1px;
+}
+.fourthcertificateDodo{
+    margin-top: 20px;
+}
+
+.fourthInnerNewItems{
+    margin-right: 50px;
+
+}
+
+
+
+@font-face {
+    font-family: perpetua;
+    src: url(../fonts/perpetua/PERTILI.TTF);
+  }

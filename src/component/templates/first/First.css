@@ -1,0 +1,155 @@
+.pageContainer{
+    position: relative;
+    background-color: beige;
+    
+
+}
+
+.profileImage{
+    width: 150px;
+    border-radius: 100%;
+    margin-top: 0.75cm;
+    margin-left: 1.3cm;
+}
+
+.userName{
+    position: absolute;
+    top: 2.4cm;
+    left: 8.3cm;
+    font-family:perpetua;
+    font-size: xx-large;
+}
+
+.lowerSection{
+    position: relative;
+    margin-top: 1.3cm;
+}
+
+.leftAsid{
+    position: absolute;
+    font-family: 'Times New Roman', Times, serif;
+    width: 7.35cm;
+    height: 100%;
+    background: rgb(39, 39, 39);
+    padding: 0.75cm;
+    padding-top: 15px;
+    border-top-right-radius: 30px;
+    font-size: 12px;
+    color: beige;
+}
+
+.rightAsid{
+    /* padding-top: 25px; */
+    font-family: 'Times New Roman', Times, serif;
+    width: 13.25cm;
+    margin-left: 8.35cm;
+    font-size: 12px;
+    line-height: 15px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+}
+
+.headOfFeild{
+    font-size: 20px;
+    margin-bottom: -10px;
+}
+.headOfFeild svg{
+    margin-right: 5px;
+}
+.soso .headOfFeild{
+    margin-top: 25px;
+    margin-bottom: -15px;
+}
+.rightAsid .headOfFeild{
+    margin-top: 25px;
+}
+.titleOfPosition{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.periodOfPosition{
+    display: inline-block;
+    float: right;
+}
+.certificateName{
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.certificateDate{
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+}
+.certificateSkill{
+    display: inline-block;
+    margin-top: -12px;
+}
+.skillOfMine{
+    display: inline;
+    margin-right: 5px;
+}
+.contactInfos{
+    margin-bottom: 2px;
+    text-decoration: none;
+    color: white;
+}
+a{
+    display: inline-block;
+}
+.contactInfos p{
+    margin-bottom: 2px;
+    text-decoration: none;
+    color: white;
+}
+.line{
+    margin-bottom: -10px;
+}
+
+.titleOfEducation{
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+.periodOfEducation{
+    display: inline-block;
+    float: right;
+}
+
+.descriptionOfEducation{
+    margin-bottom: 20px;
+}
+.newName{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+}
+.newDesc{
+    margin-bottom: 1px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.certificateDodo{
+    margin-top: 20px;
+}
+
+.innerNewItems{
+    margin-right: 50px;
+
+}
+.newContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.firstnewPosition{
+    margin-top: 15px;
+}
+@font-face {
+    font-family: perpetua;
+    src: url(../fonts/perpetua/PERTILI.TTF);
+  }

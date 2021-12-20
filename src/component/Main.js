@@ -12,7 +12,7 @@ class Main extends React.Component {
         this.state = {
             infosMap: [],
             index: 10,
-            month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            month: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             year: [],
             feilds: [],
 
@@ -48,9 +48,11 @@ class Main extends React.Component {
         this.addDataFunc('Personal Details', 0)
     }
     // add new feild
+
     addDataFunc = async (dataType, idx) => {
         // console.log("hhhhhhhhhhhhhhhhhhh");
 
+        this.emptyTheForm();
         await this.props.addDataFunc(dataType, idx)
         await this.setState({
             infosMap: this.props.infos
@@ -59,6 +61,7 @@ class Main extends React.Component {
         if (this.props.newDataAdded !== "Add new feild") {
             this.renderMapData()
         }
+        console.log(this.props.dataToShowInForm);
     }
     // Add new object to the feild
     addObj = (head) => {
@@ -108,7 +111,7 @@ class Main extends React.Component {
                 data.push(obj)
 
             })
-          
+
         } else if (this.props.index == 0) {
             myDataArray.forEach((feild, idx) => {
                 feild.forEach((id) => {
@@ -130,19 +133,19 @@ class Main extends React.Component {
                 data.push(obj)
 
             })
-          
-        }else if(this.props.index>=6){
+
+        } else if (this.props.index >= 6) {
 
             myDataArray.forEach((feild, idx) => {
 
                 console.log((feild));
                 feild.forEach((id, idx2) => {
-                    if(idx2 == 0){
+                    if (idx2 == 0) {
                         console.log(document.getElementById(`feildName${idx}`).value);
                         console.log(id[0]);
                         id[1] = document.getElementById(`feildName${idx}`).value
                     }
-                    if(idx2 == 1){
+                    if (idx2 == 1) {
                         console.log(document.getElementById(`feildDesc${idx}`).value);
                         console.log(id[0]);
                         id[1] = document.getElementById(`feildDesc${idx}`).value
@@ -153,11 +156,11 @@ class Main extends React.Component {
                 data.push(obj)
 
             })
-            
-        }else if(this.props.index==1){
+
+        } else if (this.props.index == 1) {
             // feildDesc
             let obj = {
-                feildDesc:event.target.feildDesc.value
+                feildDesc: event.target.feildDesc.value
             }
             data.push(obj);
 
@@ -172,6 +175,25 @@ class Main extends React.Component {
         this.props.submitForm(data, this.props.index)
 
     }
+    // Empty the form 
+    emptyTheForm = () => {
+        let myDataArray = this.state.feilds
+        if (this.props.index >= 6) {
+            myDataArray.forEach((feild, idx) => {
+
+                feild.forEach((id, idx2) => {
+                    if (idx2 == 0) {
+                        document.getElementById(`feildName${idx}`).value = "";
+                    }
+                    if (idx2 == 1) {
+                        document.getElementById(`feildDesc${idx}`).value = "";
+                    }
+                })
+            })
+        }
+        console.log("Form Is Empty");
+    }
+
     render() {
 
         return (
@@ -180,7 +202,7 @@ class Main extends React.Component {
                 <div className="main_Container">
                     <section className="left_Section">
                         {
-                            this.state.infosMap?.map((infos, idx) => {
+                            this.props.infos?.map((infos, idx) => {
                                 return (
                                     <button onClick={() => this.addDataFunc(infos.head, idx)} key={idx} className="info_btn">{infos.head.split("_")[0]}</button>
                                 )
@@ -203,19 +225,19 @@ class Main extends React.Component {
                                 <>
                                     <Form onSubmit={this.submitForm}>
                                         {
-                                            this.state.infosMap[this.props.index].data.map((feild, indexFeild) => {
+                                            this.props.infos[this.props.index].data.map((feild, indexFeild) => {
                                                 return (
                                                     <>
                                                         <hr className="formLabel" />
                                                         <Form.Group className="mb-3" id="formBasicEmail">
                                                             <Form.Label className="formLabel" htmlFor="feildName"> {this.props.newDataAdded.split("_")[0]} Name </Form.Label>
-                                                            <Form.Control required type="text" id={`feildName${indexFeild}`} defaultValue={feild.name} name="feildName" />
+                                                            <Form.Control required type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
 
                                                         </Form.Group>
 
                                                         <Form.Group className="mb-3" id="formBasicPassword">
                                                             <Form.Label className="formLabel" htmlFor="feildDesc"> {this.props.newDataAdded.split("_")[0]} Description </Form.Label>
-                                                            <Form.Control as="textarea" rows={3} type="text" defaultValue={feild.descreption} id={`feildDesc${indexFeild}`} name="feildDesc" />
+                                                            <Form.Control as="textarea" rows={3} type="text" placeholder={feild.descreption} id={`feildDesc${indexFeild}`} name="feildDesc" />
                                                         </Form.Group>
 
 
@@ -249,7 +271,7 @@ class Main extends React.Component {
 
                                     <Form.Group className="mb-3" id="formBasicPassword">
                                         <Form.Label className="formLabel" htmlFor="feildDesc"> {this.props.newDataAdded.split("_")[0]} Description </Form.Label>
-                                        <Form.Control as="textarea" rows={6} type="text" id="feildDesc" defaultValue={this.state.infosMap[this.props.index].data[0].feildDesc} name="feildDesc" />
+                                        <Form.Control as="textarea" className={`${this.props.infos[this.props.index].data[0].feildDesc}`} rows={6} type="text" id="feildDesc" defaultValue={this.props.infos[this.props.index].data[0].feildDesc} name="feildDesc" />
                                     </Form.Group>
                                     <hr className="formLabel" />
 
@@ -284,16 +306,16 @@ class Main extends React.Component {
                                                                             ((data[0] !== "About_Me") && (data[0] !== "Start_Date") && (data[0] !== "End_Date") && (data[0] !== "Start__Date") && (data[0] !== "End__Date") && (data[0] !== "Date")) &&
                                                                             (
                                                                                 <>
-                                                                                {(this.props.index == 0 && indexFeild == 0) &&
-                                                                                    <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
-                                                                                        <Form.Control id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
-                                                                                    </FloatingLabel>
-                                                                                }
-                                                                                {(this.props.index !== 0) &&
-                                                                                    <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
-                                                                                        <Form.Control id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
-                                                                                    </FloatingLabel>
-                                                                                }
+                                                                                    {(this.props.index == 0 && indexFeild == 0) &&
+                                                                                        <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
+                                                                                            <Form.Control as="textarea" row={3} id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
+                                                                                        </FloatingLabel>
+                                                                                    }
+                                                                                    {(this.props.index !== 0) &&
+                                                                                        <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
+                                                                                            <Form.Control as="textarea" row={3} id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
+                                                                                        </FloatingLabel>
+                                                                                    }
                                                                                     {
                                                                                         (indexFeild > 0 && this.props.index == 0) &&
                                                                                         <>
@@ -301,14 +323,14 @@ class Main extends React.Component {
                                                                                                 {(data[0] !== "new_Skill") &&
                                                                                                     <Col md>
                                                                                                         <FloatingLabel id={`${data[0]}`} label={`data`}>
-                                                                                                            <Form.Control id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[0]}`} placeholder={`${data[0]}`} type="text" />
+                                                                                                            <Form.Control as="textarea" row={3} id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[0]}`} placeholder={`${data[0]}`} type="text" />
                                                                                                         </FloatingLabel>
                                                                                                     </Col>
                                                                                                 }
 
                                                                                                 <Col md>
                                                                                                     <FloatingLabel id={`${data[1]}`} label={`value`}>
-                                                                                                        <Form.Control id={`${data[0]}${indexFeild}value`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`Value`} type="text" />
+                                                                                                        <Form.Control as="textarea" row={3} id={`${data[0]}${indexFeild}value`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`Value`} type="text" />
                                                                                                     </FloatingLabel>
                                                                                                 </Col>
                                                                                             </Row>
