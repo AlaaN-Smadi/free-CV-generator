@@ -32,8 +32,9 @@ class First extends React.Component {
     render() {
         return (
             <div className='pageContainer'>
-                <img alt="prfile Image" className='profileImage' src={this.state.image?.img} />
-
+                <div className='profileImage'>
+                    <img alt="prfile Image" className='profileImage' src={this.state.image?.img} />
+                </div>
                 <p className='userName'> <b> {this.state.data[0]?.data[0]?.Name} </b> </p>
 
                 <section className='lowerSection'>
