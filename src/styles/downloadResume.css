@@ -97,6 +97,41 @@
     background: rgb(224, 182, 127);
     transition: 1s;
 }
+
+.leftAds{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    top: 554px;
+    left: 20px;
+}
+.rightAds{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    top: 554px;
+    right: 20px;
+}
+.rightVerticalAds{
+    position: absolute;
+    height: 600px;
+    width: 200px;
+    top: 754px;
+    right: 20px;
+}
+.leftVerticalAds{
+    position: absolute;
+    height: 600px;
+    width: 200px;
+    top: 754px;
+    left: 20px;
+}
+
+.adsbygoogle{
+    display:block;
+    text-align:center;
+}
+
 @media screen and (max-width: 26.5cm) {
     .mainResumeContainer{
         width: 26.5cm;

@@ -427,6 +427,19 @@ class Main extends React.Component {
                         </div>
                     </section>
 
+
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
+                        crossorigin="anonymous"></script>
+                    {/* <!-- mainFooter --> */}
+                    <ins class="adsbygoogle"
+                        style={{display:"block"}}
+                        data-ad-client="ca-pub-8379054609541639"
+                        data-ad-slot="3871957559"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({ });
+                    </script>
                 </div>
             </>
         )
