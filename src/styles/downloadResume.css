@@ -19,12 +19,12 @@
 
 .logoContainer{
     position: absolute;
-  width: 115px;
-  height: 50px;
-  /* background-color: black; */
-  /* background-image: url("../image/logo_Test.png"); */
-  top: 25px;
-  left: 25px;
+    width: 115px;
+    height: 50px;
+    /* background-color: black; */
+    /* background-image: url("../image/logo_Test.png"); */
+    top: 25px;
+    left: 25px;
 
 }
 .logoContainer img{
@@ -39,7 +39,7 @@
     
     width: 100%;
     padding-bottom: 150px;
-    background-color: rgb(182, 182, 182);
+    background-color: rgb(32, 43, 80);
     position: absolute;
     top: 0;
     left: 0;
@@ -51,8 +51,10 @@
     /* position: absolute; */
     margin-left: auto;
     margin-right: auto;
-    width: 21.6cm;
-    background: bisque;
+    width: 23.6cm;
+    padding: 1cm;
+    padding-bottom: 5cm;
+    background: rgb(79, 94, 143);
     margin-top: 7.5cm;
 }
 
@@ -63,9 +65,12 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     top: 5cm;
-    margin-left: 2cm;
-    margin-right: 2cm;
-
+    border-radius: 5px;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    background-color: rgb(79, 94, 143);
+    padding-left: 1cm;
+    padding-right: 1cm;
 }
 
 
@@ -73,7 +78,7 @@
 .buttonsContainer{
     position: absolute;
     width: 100%;
-    bottom: 40px;
+    bottom: 200px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
