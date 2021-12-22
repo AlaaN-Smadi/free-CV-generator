@@ -73,9 +73,9 @@ class First extends React.Component {
                                 //0: {new_Skill: 'HTML5'}
                                 // 1: {new_Skill: 'ES5 | ES6'}
                                 // 2: {new_Skill: 'CSS3'}
-                                return (<div className='fifthskillOfMine'>
+                                return (<div className='fifthskillOfMine skill_Line'>
 
-                                    <p className='fifthskillOfMine'> {objData.new_Skill} , </p>
+                                    <p className='fifthskillOfMine skill_Line'> {objData.new_Skill} , </p>
 
                                 </div>)
 

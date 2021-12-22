@@ -88,7 +88,7 @@
 .fourthtitleOfPosition{
     /* display: inline-block; */
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .fourthperiodOfPosition{
     /* display: inline-block; */
@@ -135,7 +135,7 @@
     border-radius: 100%;
 }
 .fourthcontactInfos{
-    margin-bottom: 4px;
+    margin-bottom: 10px;
     text-decoration: none;
 }
 a{
@@ -160,7 +160,7 @@ a{
 .fourthtitleOfEducation{
     /* display: inline-block; */
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .fourthperiodOfEducation{
     /* display: inline-block; */

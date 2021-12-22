@@ -68,7 +68,7 @@
 .titleOfPosition{
     display: inline-block;
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .periodOfPosition{
     display: inline-block;
@@ -113,7 +113,7 @@ a{
 .titleOfEducation{
     display: inline-block;
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .periodOfEducation{
     display: inline-block;

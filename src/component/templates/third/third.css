@@ -64,6 +64,7 @@
     background: #5b1c19;
     padding: 3px;
     color: beige;
+    margin-bottom: 10px;
 }
 
 
@@ -75,7 +76,7 @@
 .thirdtitleOfPosition{
     display: inline-block;
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .thirdperiodOfPosition{
     display: inline-block;
@@ -87,7 +88,7 @@
 .thirdtitleOfEducation{
     display: inline-block;
     font-size: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 .thirdperiodOfEducation{
     display: inline-block;
