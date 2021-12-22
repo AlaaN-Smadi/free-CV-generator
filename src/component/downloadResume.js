@@ -98,22 +98,17 @@ class DownloadResume extends React.Component {
                 </div>
 
                 <div className='leftAds'>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
-                        crossorigin="anonymous"></script>
+
                     <ins class="adsbygoogle"
 
                         data-ad-layout="in-article"
                         data-ad-format="fluid"
                         data-ad-client="ca-pub-8379054609541639"
                         data-ad-slot="7015644579"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script>
+
                 </div>
 
                 <div className='leftVerticalAds'>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
-                        crossorigin="anonymous"></script>
                     {/* <!-- leftVerticalAds --> */}
                     <ins class="adsbygoogle"
                         style={{ display: "block" }}
@@ -121,14 +116,11 @@ class DownloadResume extends React.Component {
                         data-ad-slot="1076922188"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script>
+
                 </div>
 
                 <div className='rightAds'>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
-                        crossorigin="anonymous"></script>
+
                     {/* <!-- rightSquare --> */}
                     <ins class="adsbygoogle"
                         style={{ display: "block" }}
@@ -136,13 +128,10 @@ class DownloadResume extends React.Component {
                         data-ad-slot="8460588181"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script>
+
                 </div>
                 <div className='rightVerticalAds'>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
-                        crossorigin="anonymous"></script>
+
                     {/* <!-- rightVerticalAds --> */}
                     <ins class="adsbygoogle"
                         style={{ display: "block" }}
@@ -150,9 +139,7 @@ class DownloadResume extends React.Component {
                         data-ad-slot="3016689815"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script>
+
                 </div>
             </div>
         )

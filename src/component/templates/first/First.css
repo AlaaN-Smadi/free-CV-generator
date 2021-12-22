@@ -87,7 +87,7 @@
 }
 .certificateSkill{
     display: inline-block;
-    margin-top: -12px;
+    /* margin-top: -12px; */
 }
 .skillOfMine{
     display: inline;

@@ -12,6 +12,7 @@ import CheckoutButton from './component/CheckoutButton'
 import Modal_Data from './component/Modal_Data';
 import Swal from 'sweetalert2'
 import DownloadResume from './component/downloadResume'
+import Guide_Modal from './component/Guide_Modal'
 
 
 class App extends React.Component {
@@ -89,7 +90,8 @@ class App extends React.Component {
       newFeildAdded: 'Personal Details',
       index: 0,
       download: false,
-      dataToShowInForm:[]
+      dataToShowInForm:[],
+      giudeModal:false
     }
   }
 
@@ -349,6 +351,13 @@ class App extends React.Component {
     })
   }
 
+  // giude modal handler
+  handleClose = async () => {
+    await this.setState({
+      giudeModal: !this.state.giudeModal
+    })
+  }
+
   render() {
 
     return (
@@ -373,8 +382,9 @@ class App extends React.Component {
 
             <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-            <Main dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
+            <Main handleGuide={this.handleClose} dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
+            <Guide_Modal handleClose={this.handleClose} show={this.state.giudeModal} />
 
             <Footer />
 

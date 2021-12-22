@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/main.css';
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
 import { Modal, Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
+// BsQuestionCircleFill
+import { BsQuestionCircleFill } from 'react-icons/bs';
 
 
 class Main extends React.Component {
@@ -215,7 +215,7 @@ class Main extends React.Component {
                     <section className="left_Section">
                         <div className="CV_Infos">
                             {/* <p className="CV_Infos_Title"> <b> Your Info </b> </p> */}
-                            <p className="CV_Infos_Title"> <b> {this.props.newDataAdded.split("_")[0]} </b> </p>
+                            <p className="CV_Infos_Title"> <b> {this.props.newDataAdded.split("_")[0]} </b> <span onClick={this.props.handleGuide} className='questions' title='Guide to work'><BsQuestionCircleFill /></span> </p>
 
 
 
@@ -241,7 +241,7 @@ class Main extends React.Component {
                                                         </Form.Group>
 
 
-                                                        <Button onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
+                                                        <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
                                                             Delete ❌
                                                         </Button>
                                                         <hr className="formLabel" />
@@ -392,7 +392,7 @@ class Main extends React.Component {
                                                             ((indexFeild > 0) || (this.props.newDataAdded.split("_")[0] == "Skills")) &&
                                                             <>
                                                                 <br />
-                                                                <Button onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
+                                                                <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
                                                                     Delete ❌
                                                                 </Button>
                                                             </>
@@ -428,8 +428,7 @@ class Main extends React.Component {
                     </section>
 
 
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379054609541639"
-                        crossorigin="anonymous"></script>
+                   
                     {/* <!-- mainFooter --> */}
                     <ins class="adsbygoogle"
                         style={{display:"block"}}
@@ -437,9 +436,7 @@ class Main extends React.Component {
                         data-ad-slot="3871957559"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script>
+                    
                 </div>
             </>
         )
