@@ -151,6 +151,11 @@ a{
 .firstnewPosition{
     margin-top: 15px;
 }
+
+.skill_Line{
+    line-height: 15px;
+}
+
 @font-face {
     font-family: perpetua;
     src: url(../fonts/perpetua/PERTILI.TTF);

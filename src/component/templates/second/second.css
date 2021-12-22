@@ -54,11 +54,13 @@
 .secondheadOfFeild{
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-bottom: -20px;
+    margin-bottom: -10px;
     margin-top: 25px;
 }
 
-
+.skill_Line{
+    line-height: 15px;
+}
 
 .secondtitleOfPosition{
     display: inline-block;

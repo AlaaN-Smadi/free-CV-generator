@@ -54,7 +54,7 @@
 .thirdheadOfFeild{
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
-    margin-bottom: -20px;
+    margin-bottom: -10px;
     margin-top: 25px;
 }
 .thirdheadOfLeftFeild{
@@ -64,6 +64,11 @@
     background: #5b1c19;
     padding: 3px;
     color: beige;
+}
+
+
+.skill_Line{
+    line-height: 15px;
 }
 
 

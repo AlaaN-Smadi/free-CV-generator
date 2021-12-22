@@ -101,7 +101,7 @@ class First extends React.Component {
                                         {
                                             objData.Technical_skills?.split("\n").map((skill, num) => {
                                                 return (
-                                                    <span className='fifthcertificateSkill'>{skill}</span>
+                                                    <span className='fifthcertificateSkill skill_Line'>{skill}</span>
                                                     // <p> ------------------ </p>
                                                 )
                                             })
@@ -121,7 +121,7 @@ class First extends React.Component {
                     <div className='fifthprofileContainer'>
                         <p className='fifthheadOfFeild'> <b> About Me </b> </p>
                         <hr />
-                        <span> {this.state.data[1]?.data[0]?.feildDesc} </span>
+                        <span className='skill_Line'> {this.state.data[1]?.data[0]?.feildDesc} </span>
                     </div>
 
                     <div className='fifthexperienceContainer'>
@@ -145,7 +145,7 @@ class First extends React.Component {
                                                 objData.Technical_Skills?.split("\n").map(skill => {
                                                     return (
                                                         <>
-                                                            <span> {skill} </span>
+                                                            <span className='skill_Line'> {skill} </span>
                                                             <br />
                                                         </>
                                                     )
@@ -159,7 +159,7 @@ class First extends React.Component {
                                                 objData?.Description?.split("\n").map(desc => {
                                                     return (
                                                         <>
-                                                            <span> {desc} </span>
+                                                            <span className='skill_Line'> {desc} </span>
                                                             <br />
                                                         </>
                                                     )
@@ -208,7 +208,7 @@ name: "GIS" */}
                                             {
                                                 objData.Technical__Skills?.split("\n").map(skill => {
                                                     return (
-                                                        <span> {skill} </span>
+                                                        <span className='skill_Line'> {skill} </span>
                                                     )
                                                 })
                                             }
@@ -219,7 +219,7 @@ name: "GIS" */}
                                                 objData.description?.split("\n").map(desc => {
                                                     return (
                                                         <>
-                                                            <span> {desc} </span>
+                                                            <span className='skill_Line'> {desc} </span>
                                                             <br />
                                                         </>
                                                     )
@@ -250,13 +250,14 @@ name: "GIS" */}
                                                 feild.data?.map((objData, index) => {
                                                     return (
                                                         <div className='fifthinnerNewItems'>
-                                                            <p className='fifthnewName'> <b> {objData.name} </b> </p>
+                                                            <p className='fifthnewName skill_Line'> <b> {objData.name} </b> </p>
 
                                                             <div className='fifthnewDesc'>
                                                                 {
                                                                     objData.descreption.split("\n").map(desc => {
                                                                         return (
-                                                                            <p className='fifthnewDesc'> {desc} </p>)
+                                                                            // className='skill_Line'
+                                                                            <p className='fifthnewDesc skill_Line'> {desc} </p>)
                                                                     })
                                                                 }
                                                             </div>
