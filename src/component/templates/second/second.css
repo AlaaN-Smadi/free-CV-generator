@@ -129,7 +129,8 @@
 .secondnewContainer{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .secondmyNote{
