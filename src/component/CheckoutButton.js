@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import checout from "../image/checkout.png"
 import notChecout from "../image/notCheckout.png"
 import deleteData from "../image/delete_data.png"

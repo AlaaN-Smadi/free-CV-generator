@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { Button, ButtonGroup } from 'react-bootstrap';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import { useState } from 'react';
+import React from 'react'
+// import { Button, ButtonGroup } from 'react-bootstrap';
+// import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+// import ToggleButton from 'react-bootstrap/ToggleButton';
+// import { useState } from 'react';
 import "../styles/Header.css"
 import logo from "../image/logo_Test.png"
 
 
 
 function ToggleButtonExample() {
-    const [checked, setChecked] = useState(false);
-    const [radioValue, setRadioValue] = useState('1');
+    // const [checked, setChecked] = useState(false);
+    // const [radioValue, setRadioValue] = useState('1');
 
     
     return (

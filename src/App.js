@@ -6,7 +6,6 @@ import Main from './component/Main'
 import Footer from './component/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Personal_Image from './component/Personal_Image'
-import { Modal, Button } from 'react-bootstrap'
 import CropImage from './component/cropImage'
 import CheckoutButton from './component/CheckoutButton'
 import Modal_Data from './component/Modal_Data';
@@ -250,7 +249,7 @@ class App extends React.Component {
   addSkillsPersonal = async (head) => {
     let myNewObj = { new_data: "" }
     let myStateData = this.state.infos
-    if (head == "Skills") {
+    if (head === "Skills") {
       myNewObj = { new_Skill: "" }
       myStateData[5].data.push(myNewObj)
     } else {
@@ -361,14 +360,14 @@ class App extends React.Component {
   infoPositionChange = async (idx, type) => {
     let myArr = this.state.infos;
 
-    if (type == "up") {
+    if (type === "up") {
       if (idx !== 0) {
         let temp = myArr[idx]
         myArr[idx] = myArr[idx - 1]
         myArr[idx - 1] = temp
       }
 
-    } else if (type == "down") {
+    } else if (type === "down") {
       if (idx !== myArr.length - 1) {
         let temp = myArr[idx]
         myArr[idx] = myArr[idx + 1]
@@ -384,13 +383,13 @@ class App extends React.Component {
   // change data position inside feilds 
   dataPositionChange = async (feildIndex, dataIndex, type) => {
     let myArr = this.state.infos
-    if (type == "up") {
+    if (type === "up") {
       if (dataIndex !== 0) {
         let temp = myArr[feildIndex].data[dataIndex]
         myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex - 1]
         myArr[feildIndex].data[dataIndex - 1] = temp
       }
-    } else if (type == "down") {
+    } else if (type === "down") {
       if (dataIndex !== myArr[feildIndex].data.length - 1) {
         let temp = myArr[feildIndex].data[dataIndex]
         myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex + 1]
@@ -419,7 +418,7 @@ class App extends React.Component {
 
             }
             {
-              (this.state.addData && (this.state.newFeildAdded == 'Add new feild')) &&
+              (this.state.addData && (this.state.newFeildAdded === 'Add new feild')) &&
               <Modal_Data infos={this.state.infos} addNewFeild={this.addNewFeild} newDataAdded={this.state.newFeildAdded} show={this.state.addData} hideModalData={this.hideDataFunc} />
             }
 

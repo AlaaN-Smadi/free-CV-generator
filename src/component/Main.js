@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/main.css';
-import { Modal, Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
+import {  Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
 // BsQuestionCircleFill
 import { BsQuestionCircleFill } from 'react-icons/bs';
 // BsFillArrowUpCircleFill
 // BsArrowDownCircleFill
 // FaRegArrowAltCircleUp
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
-import { FaRegArrowAltCircleUp } from 'react-icons/fa';
 
 
 
@@ -71,9 +70,9 @@ class Main extends React.Component {
     }
     // Add new object to the feild
     addObj = (head) => {
-        if (head == 'Experience' || head == 'Education' || head == 'Certificate') {
+        if (head === 'Experience' || head === 'Education' || head === 'Certificate') {
             this.props.addObj(head)
-        } else if (this.props.newDataAdded.split("_")[1] == 'New') {
+        } else if (this.props.newDataAdded.split("_")[1] === 'New') {
             this.props.addNewObjToFeild(this.props.index)
         }
         else {
@@ -102,7 +101,7 @@ class Main extends React.Component {
                     console.log(`${id[0]}${idx}`);
                     console.log(document.getElementById(`${id[0]}${idx}`).value);
                     console.log(`${id[0]}${idx}`.slice(0, 4));
-                    if (`${id[0]}${idx}`.slice(0, 4) == "Date" || `${id[0]}${idx}`.slice(0, 4) == "Star" || `${id[0]}${idx}`.slice(0, 4) == "End_") {
+                    if (`${id[0]}${idx}`.slice(0, 4) === "Date" || `${id[0]}${idx}`.slice(0, 4) === "Star" || `${id[0]}${idx}`.slice(0, 4) === "End_") {
                         // console.log("+++++++++++++++++++++++++++++++++++++");
                         // console.log(document.getElementById(`${id[0]}${idx}Year`).value);
                         let date = `${document.getElementById(`${id[0]}${idx}`).value}-${document.getElementById(`${id[0]}${idx}Year`).value}`
@@ -118,10 +117,10 @@ class Main extends React.Component {
 
             })
 
-        } else if (this.props.index == 0) {
+        } else if (this.props.index === 0) {
             myDataArray.forEach((feild, idx) => {
                 feild.forEach((id) => {
-                    if (idx == 0) {
+                    if (idx === 0) {
                         console.log(`${id[0]}${idx}`);
                         id[1] = document.getElementById(`${id[0]}${idx}`).value
                     } else {
@@ -146,15 +145,17 @@ class Main extends React.Component {
 
                 console.log((feild));
                 feild.forEach((id, idx2) => {
-                    if (idx2 == 0) {
-                        console.log(document.getElementById(`feildName${idx}`).value);
-                        console.log(id[0]);
-                        id[1] = document.getElementById(`feildName${idx}`).value
+                    if (idx2 === 0) {
+                        // console.log(document.getElementById(`feildName${idx}`).value);
+                        // console.log(id[0]);
+                        id[1] = document.getElementById(`feildName${idx}`).value || id[1]
+                        console.log(id[1]);
                     }
-                    if (idx2 == 1) {
-                        console.log(document.getElementById(`feildDesc${idx}`).value);
-                        console.log(id[0]);
-                        id[1] = document.getElementById(`feildDesc${idx}`).value
+                    if (idx2 === 1) {
+                        // console.log(document.getElementById(`feildDesc${idx}`).value);
+                        // console.log(id[0]);
+                        id[1] = document.getElementById(`feildDesc${idx}`).value || id[1]
+                        console.log(id[1]);
                     }
                 })
                 const obj = Object.fromEntries(feild);
@@ -163,7 +164,7 @@ class Main extends React.Component {
 
             })
 
-        } else if (this.props.index == 1) {
+        } else if (this.props.index === 1) {
             // feildDesc
             let obj = {
                 feildDesc: event.target.feildDesc.value
@@ -188,10 +189,10 @@ class Main extends React.Component {
             myDataArray.forEach((feild, idx) => {
 
                 feild.forEach((id, idx2) => {
-                    if (idx2 == 0) {
+                    if (idx2 === 0) {
                         document.getElementById(`feildName${idx}`).value = "";
                     }
-                    if (idx2 == 1) {
+                    if (idx2 === 1) {
                         document.getElementById(`feildDesc${idx}`).value = "";
                     }
                 })
@@ -204,14 +205,14 @@ class Main extends React.Component {
         // console.log(this.state.feilds)
         let myArr = this.state.feilds
         console.log('(------------------------');
-        if (type == "up") {
+        if (type === "up") {
             if (dataIndex !== 0) {
                 let temp = myArr[dataIndex]
                 myArr[dataIndex] = myArr[dataIndex - 1]
                 myArr[dataIndex - 1] = temp
                 console.log("change Done");
             }
-        } else if (type == "down") {
+        } else if (type === "down") {
             if (dataIndex !== myArr.length - 1) {
                 let temp = myArr[dataIndex]
                 myArr[dataIndex] = myArr[dataIndex + 1]
@@ -224,7 +225,7 @@ class Main extends React.Component {
         })
         console.log('------------------------)');
 
-        if(this.props.newDataAdded.split("_")[0] == "Skills"){
+        if(this.props.newDataAdded.split("_")[0] === "Skills"){
              this.state.feilds.forEach((feild, idx) => {
             feild.forEach((id) => {
                 let a = document.getElementById(`${id[0]}${idx}`)
@@ -270,7 +271,7 @@ class Main extends React.Component {
 
                             <span>  </span>
                             {
-                                (this.props.newDataAdded.split("_")[1] == 'New') &&
+                                (this.props.newDataAdded.split("_")[1] === 'New') &&
                                 <>
                                     <Form onSubmit={this.submitForm}>
                                         {
@@ -280,7 +281,7 @@ class Main extends React.Component {
                                                         <hr className="formLabel" />
                                                         <Form.Group className="mb-3" id="formBasicEmail">
                                                             <Form.Label className="formLabel" htmlFor="feildName"> {this.props.newDataAdded.split("_")[0]} Name </Form.Label>
-                                                            <Form.Control required type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
+                                                            <Form.Control  type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
 
                                                         </Form.Group>
 
@@ -318,7 +319,7 @@ class Main extends React.Component {
                             }
 
                             {
-                                (this.props.newDataAdded.split("_")[0] == 'Personal Profile') &&
+                                (this.props.newDataAdded.split("_")[0] === 'Personal Profile') &&
                                 <Form onSubmit={this.submitForm}>
 
                                     <hr className="formLabel" />
@@ -360,7 +361,7 @@ class Main extends React.Component {
                                                                             ((data[0] !== "About_Me") && (data[0] !== "Start_Date") && (data[0] !== "End_Date") && (data[0] !== "Start__Date") && (data[0] !== "End__Date") && (data[0] !== "Date")) &&
                                                                             (
                                                                                 <>
-                                                                                    {(this.props.index == 0 && indexFeild == 0) &&
+                                                                                    {(this.props.index === 0 && indexFeild === 0) &&
                                                                                         <>
 
                                                                                             <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
@@ -377,7 +378,7 @@ class Main extends React.Component {
                                                                                         </Row>
                                                                                     }
                                                                                     {
-                                                                                        (indexFeild > 0 && this.props.index == 0) &&
+                                                                                        (indexFeild > 0 && this.props.index === 0) &&
                                                                                         <>
                                                                                             <Row className="g-2">
                                                                                                 {(data[0] !== "new_Skill") &&
@@ -402,7 +403,7 @@ class Main extends React.Component {
                                                                         }
 
                                                                         {
-                                                                            ((data[0] == "Start_Date") || (data[0] == "End_Date") || (data[0] == "Start__Date") || (data[0] == "End__Date") || (data[0] == "Date")) &&
+                                                                            ((data[0] === "Start_Date") || (data[0] === "End_Date") || (data[0] === "Start__Date") || (data[0] === "End__Date") || (data[0] === "Date")) &&
                                                                             <>
 
                                                                                 <Form.Label className="formLabel"> {data[0]} </Form.Label>
@@ -433,7 +434,7 @@ class Main extends React.Component {
                                                                                                     )
                                                                                                 })}
                                                                                                 {
-                                                                                                    (data[0] == "End_Date") &&
+                                                                                                    (data[0] === "End_Date") &&
                                                                                                     <option value="Present" > Present </option>
                                                                                                 }
                                                                                             </Form.Select>
@@ -449,15 +450,18 @@ class Main extends React.Component {
                                                             })
                                                         }
                                                         {
-                                                            ((indexFeild > 0) || (this.props.newDataAdded?.split("_")[0] == "Skills")) &&
+                                                            ((indexFeild > 0) || (this.props.newDataAdded?.split("_")[0] === "Skills")) &&
                                                             <>
                                                                 <br />
                                                                 <div className='changeDataIsideFeilds'>
                                                                     <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
                                                                         Delete ❌
                                                                     </Button>
+                                                                    {
+                                                                        (this.props.index !== 0 || indexFeild > 1 ) &&
+                                                                        <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
 
-                                                                    <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                                                    }
                                                                     <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
                                                                 </div>
                                                             </>

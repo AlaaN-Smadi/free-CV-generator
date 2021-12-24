@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import upload from "../image/upload_Image.png"
 import "../styles/personal_Image.css"
-import cropImage from './cropImage';
+// import cropImage from './cropImage';
 
 class Personal_Image extends React.Component {
     constructor(props){

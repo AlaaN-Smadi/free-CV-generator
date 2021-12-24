@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Cropper from 'cropperjs'
 import "cropperjs/dist/cropper.min.css"
 import "../styles/cropImage.css"

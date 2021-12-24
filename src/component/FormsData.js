@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { Modal, Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
+import React from 'react'
+import {  Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
 // BsQuestionCircleFill
-import { BsQuestionCircleFill } from 'react-icons/bs';
+// import { BsQuestionCircleFill } from 'react-icons/bs';
 // BsFillArrowUpCircleFill
 // BsArrowDownCircleFill
 // FaRegArrowAltCircleUp
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
-import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+// import { FaRegArrowAltCircleUp } from 'react-icons/fa';
 
 
 
@@ -43,7 +43,7 @@ class FormsData extends React.Component {
                                                     ((data[0] !== "About_Me") && (data[0] !== "Start_Date") && (data[0] !== "End_Date") && (data[0] !== "Start__Date") && (data[0] !== "End__Date") && (data[0] !== "Date")) &&
                                                     (
                                                         <>
-                                                            {(this.props.index == 0 && indexFeild == 0) &&
+                                                            {(this.props.index === 0 && indexFeild === 0) &&
                                                                 <FloatingLabel id={`${data[0]}`} label={`${data[0]}`}>
                                                                     <Form.Control as="textarea" row={3} id={`${data[0]}${indexFeild}`} name={`${data[0]}${indexFeild}`} defaultValue={`${data[1]}`} placeholder={`${data[0]}`} type="text" />
                                                                 </FloatingLabel>
@@ -54,7 +54,7 @@ class FormsData extends React.Component {
                                                                 </FloatingLabel>
                                                             }
                                                             {
-                                                                (indexFeild > 0 && this.props.index == 0) &&
+                                                                (indexFeild > 0 && this.props.index === 0) &&
                                                                 <>
                                                                     <Row className="g-2">
                                                                         {(data[0] !== "new_Skill") &&
@@ -79,7 +79,7 @@ class FormsData extends React.Component {
                                                 }
 
                                                 {
-                                                    ((data[0] == "Start_Date") || (data[0] == "End_Date") || (data[0] == "Start__Date") || (data[0] == "End__Date") || (data[0] == "Date")) &&
+                                                    ((data[0] === "Start_Date") || (data[0] === "End_Date") || (data[0] === "Start__Date") || (data[0] === "End__Date") || (data[0] === "Date")) &&
                                                     <>
 
                                                         <Form.Label className="formLabel"> {data[0]} </Form.Label>
@@ -110,7 +110,7 @@ class FormsData extends React.Component {
                                                                             )
                                                                         })}
                                                                         {
-                                                                            (data[0] == "End_Date") &&
+                                                                            (data[0] === "End_Date") &&
                                                                             <option value="Present" > Present </option>
                                                                         }
                                                                     </Form.Select>
@@ -126,7 +126,7 @@ class FormsData extends React.Component {
                                     })
                                 }
                                 {
-                                    ((indexFeild > 0) || (this.props.newDataAdded.split("_")[0] == "Skills")) &&
+                                    ((indexFeild > 0) || (this.props.newDataAdded.split("_")[0] === "Skills")) &&
                                     <>
                                         <br />
                                         <div className='changeDataIsideFeilds'>

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Modal, Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
+import React from 'react'
+import { Modal, Button, Form } from 'react-bootstrap'
 
 class Modal_Data extends React.Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Modal_Data extends React.Component {
                 </Modal.Header>
 
                 {
-                    (this.props.newDataAdded == 'Add new feild') &&
+                    (this.props.newDataAdded === 'Add new feild') &&
                     <>
                         <Form onSubmit={this.addNewFeildFun} >
                             <Modal.Body>
