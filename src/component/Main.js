@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/main.css';
-import {  Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
+import { Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
 // BsQuestionCircleFill
 import { BsQuestionCircleFill } from 'react-icons/bs';
 // BsFillArrowUpCircleFill
 // BsArrowDownCircleFill
 // FaRegArrowAltCircleUp
 import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
+import gif from "../image/my-GIF.gif";
 
 
 
@@ -30,7 +31,7 @@ class Main extends React.Component {
             let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
             myArrData.push(myFeilds)
         }
-        console.log(myArrData[0]);
+        // console.log(myArrData[0]);
 
         let yearArr = []
         for (let i = 1995; i < 2022; i++) {
@@ -57,6 +58,9 @@ class Main extends React.Component {
     addDataFunc = async (dataType, idx) => {
         // console.log("hhhhhhhhhhhhhhhhhhh");
 
+        let myGIF = document.getElementById('myWaitingGIF')
+        myGIF.style.display = 'block'
+
         this.emptyTheForm();
         await this.props.addDataFunc(dataType, idx)
         await this.setState({
@@ -66,7 +70,8 @@ class Main extends React.Component {
         if (this.props.newDataAdded !== "Add new feild") {
             this.renderMapData()
         }
-        console.log(this.props.dataToShowInForm);
+        // console.log(this.props.dataToShowInForm);
+        myGIF.style.display = 'none'
     }
     // Add new object to the feild
     addObj = (head) => {
@@ -89,6 +94,8 @@ class Main extends React.Component {
     }
     // Submit Form
     submitForm = async (event) => {
+        let myGIF = document.getElementById('myWaitingGIF')
+        myGIF.style.display = 'block'
         event.preventDefault()
         let myDataArray = this.state.feilds
         let data = []
@@ -96,11 +103,11 @@ class Main extends React.Component {
 
             myDataArray.forEach((feild, idx) => {
 
-                console.log(feild);
+                // console.log(feild);
                 feild.forEach((id) => {
-                    console.log(`${id[0]}${idx}`);
-                    console.log(document.getElementById(`${id[0]}${idx}`).value);
-                    console.log(`${id[0]}${idx}`.slice(0, 4));
+                    // console.log(`${id[0]}${idx}`);
+                    // console.log(document.getElementById(`${id[0]}${idx}`).value);
+                    // console.log(`${id[0]}${idx}`.slice(0, 4));
                     if (`${id[0]}${idx}`.slice(0, 4) === "Date" || `${id[0]}${idx}`.slice(0, 4) === "Star" || `${id[0]}${idx}`.slice(0, 4) === "End_") {
                         // console.log("+++++++++++++++++++++++++++++++++++++");
                         // console.log(document.getElementById(`${id[0]}${idx}Year`).value);
@@ -112,8 +119,8 @@ class Main extends React.Component {
                     }
                 })
                 const obj = Object.fromEntries(feild);
-                console.log(obj);
-                data.push(obj)
+                // console.log(obj);
+                // data.push(obj)
 
             })
 
@@ -121,12 +128,12 @@ class Main extends React.Component {
             myDataArray.forEach((feild, idx) => {
                 feild.forEach((id) => {
                     if (idx === 0) {
-                        console.log(`${id[0]}${idx}`);
+                        // console.log(`${id[0]}${idx}`);
                         id[1] = document.getElementById(`${id[0]}${idx}`).value
                     } else {
                         let swap = id[0]
-                        console.log(`${swap}${idx}`);
-                        console.log(`${swap}${idx}value`);
+                        // console.log(`${swap}${idx}`);
+                        // console.log(`${swap}${idx}value`);
                         id[0] = document.getElementById(`${swap}${idx}`).value
                         id[1] = document.getElementById(`${swap}${idx}value`).value
 
@@ -134,7 +141,7 @@ class Main extends React.Component {
 
                 })
                 const obj = Object.fromEntries(feild);
-                console.log(obj);
+                // console.log(obj);
                 data.push(obj)
 
             })
@@ -143,23 +150,23 @@ class Main extends React.Component {
 
             myDataArray.forEach((feild, idx) => {
 
-                console.log((feild));
+                // console.log((feild));
                 feild.forEach((id, idx2) => {
                     if (idx2 === 0) {
                         // console.log(document.getElementById(`feildName${idx}`).value);
                         // console.log(id[0]);
                         id[1] = document.getElementById(`feildName${idx}`).value || id[1]
-                        console.log(id[1]);
+                        // console.log(id[1]);
                     }
                     if (idx2 === 1) {
                         // console.log(document.getElementById(`feildDesc${idx}`).value);
                         // console.log(id[0]);
                         id[1] = document.getElementById(`feildDesc${idx}`).value || id[1]
-                        console.log(id[1]);
+                        // console.log(id[1]);
                     }
                 })
                 const obj = Object.fromEntries(feild);
-                console.log(obj);
+                // console.log(obj);
                 data.push(obj)
 
             })
@@ -173,14 +180,15 @@ class Main extends React.Component {
 
         }
 
-        console.log(myDataArray);
+        // console.log(myDataArray);
         await this.setState({
             feilds: myDataArray
         })
-        console.log(data);
+        // console.log(data);
 
         this.props.submitForm(data, this.props.index)
 
+        myGIF.style.display = 'none'
     }
     // Empty the form 
     emptyTheForm = () => {
@@ -198,50 +206,110 @@ class Main extends React.Component {
                 })
             })
         }
-        console.log("Form Is Empty");
+        // console.log("Form Is Empty");
     }
     // change data position inside feilds 
     dataPositionChange = async (feildIndex, dataIndex, type) => {
+
+        let myGIF = document.getElementById('myWaitingGIF')
+        myGIF.style.display = 'block'
         // console.log(this.state.feilds)
         let myArr = this.state.feilds
-        console.log('(------------------------');
+        // console.log('(------------------------');
         if (type === "up") {
             if (dataIndex !== 0) {
                 let temp = myArr[dataIndex]
                 myArr[dataIndex] = myArr[dataIndex - 1]
                 myArr[dataIndex - 1] = temp
-                console.log("change Done");
+                // console.log("change Done");
             }
         } else if (type === "down") {
             if (dataIndex !== myArr.length - 1) {
                 let temp = myArr[dataIndex]
                 myArr[dataIndex] = myArr[dataIndex + 1]
                 myArr[dataIndex + 1] = temp
-                console.log("change Done");
+                // console.log("change Done");
             }
         }
         await this.setState({
             feilds: myArr
         })
-        console.log('------------------------)');
+        // console.log('------------------------)');
 
-        if(this.props.newDataAdded.split("_")[0] === "Skills"){
-             this.state.feilds.forEach((feild, idx) => {
-            feild.forEach((id) => {
-                let a = document.getElementById(`${id[0]}${idx}`)
-                a.value = id[1]
+        // if (this.props.newDataAdded.split("_")[0] === "Skills") {
+        //     this.state.feilds.forEach((feild, idx) => {
+        //         feild.forEach((id) => {
+        //             let a = document.getElementById(`${id[0]}${idx}`)
+        //             a.value = id[1]
+        //         })
+        //     })
+
+        // }
+        // 
+        // 
+
+        if (this.props.index > 1 && this.props.index < 6) {
+
+            this.state.feilds.forEach((feild, idx) => {
+
+                feild.forEach((id) => {
+                   
+                    if (`${id[0]}${idx}`.slice(0, 4) === "Date" || `${id[0]}${idx}`.slice(0, 4) === "Star" || `${id[0]}${idx}`.slice(0, 4) === "End_") {
+                        // let date = `${document.getElementById(`${id[0]}${idx}`).value}-${document.getElementById(`${id[0]}${idx}Year`).value}`
+                        // id[1] = date
+
+                    } else {
+                        document.getElementById(`${id[0]}${idx}`).value = id[1]
+                    }
+                })
             })
-        })
 
-        }
-       
+        } else if (this.props.index === 0) {
+            this.state.feilds.forEach((feild, idx) => {
+                feild.forEach((id) => {
+                    if (idx === 0) {
+                        document.getElementById(`${id[0]}${idx}`).value = id[1] 
+                    } else {
+                        let swap = id[0]
+                        
+                        document.getElementById(`${swap}${idx}`).value = id[0]
+                        document.getElementById(`${swap}${idx}value`).value = id[1] 
+
+                    }
+
+                })
+
+            })
+
+        } else if (this.props.index >= 6) {
+
+            this.state.feilds.forEach((feild, idx) => {
+                feild.forEach((id, idx2) => {
+                    if (idx2 === 0) {
+                        document.getElementById(`feildName${idx}`).value = id[1]
+                    }
+                    if (idx2 === 1) {
+                        document.getElementById(`feildDesc${idx}`).value = id[1]
+                    }
+                })
+
+            })
+
+        } 
+        // 
+        // 
+
         this.props.dataPositionChange(feildIndex, dataIndex, type)
+        myGIF.style.display = 'none'
     }
 
     render() {
 
         return (
             <>
+                <div className='waitingGIF' id='myWaitingGIF'>
+                    <img src={gif} alt='gif' />
+                </div>
 
                 <div className="main_Container">
                     <section className="left_Section">
@@ -281,7 +349,7 @@ class Main extends React.Component {
                                                         <hr className="formLabel" />
                                                         <Form.Group className="mb-3" id="formBasicEmail">
                                                             <Form.Label className="formLabel" htmlFor="feildName"> {this.props.newDataAdded.split("_")[0]} Name </Form.Label>
-                                                            <Form.Control  type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
+                                                            <Form.Control type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
 
                                                         </Form.Group>
 
@@ -458,7 +526,7 @@ class Main extends React.Component {
                                                                         Delete ❌
                                                                     </Button>
                                                                     {
-                                                                        (this.props.index !== 0 || indexFeild > 1 ) &&
+                                                                        (this.props.index !== 0 || indexFeild > 1) &&
                                                                         <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
 
                                                                     }

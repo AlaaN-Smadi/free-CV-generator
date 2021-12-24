@@ -12,7 +12,7 @@ class Personal_Image extends React.Component {
     
     uploadedImageFunction = () => {
         let a = document.getElementById('MyImage')
-        console.log(a.files[0]);
+        // console.log(a.files[0]);
 
 
         this.props.setImage(a.files[0], 1)
@@ -20,7 +20,7 @@ class Personal_Image extends React.Component {
 
 
     render() {
-        console.log(this.props.image);
+        // console.log(this.props.image);
         return (
             <div>
 

@@ -108,7 +108,7 @@ class App extends React.Component {
       await this.setState({
         infos: mySavedData
       })
-      console.log(this.state.infos);
+      // console.log(this.state.infos);
     } else {
       // this.state.infos.JSON.tos
       this.addLocally()
@@ -124,13 +124,13 @@ class App extends React.Component {
   // To upload Image and set it
   setImage = (a, b) => {
     if (b) {
-      console.log(a);
+      // console.log(a);
       if (a) {
         this.setState({
           image: `${URL.createObjectURL(a)}`,
           show: !this.state.show
         })
-        console.log("this.state.image");
+        // console.log("this.state.image");
       }
 
     } else {
@@ -139,7 +139,7 @@ class App extends React.Component {
         test_Image: a,
         show: !this.state.show
       })
-      console.log("this.state.image");
+      // console.log("this.state.image");
       let imageObject = { img: a }
       localStorage.setItem("image", JSON.stringify(imageObject))
     }
@@ -147,12 +147,12 @@ class App extends React.Component {
   }
   //  Modal to set image
   showModal = async () => {
-    console.log('--------------------');
+    // console.log('--------------------');
     await this.setState({
       show: !this.state.show,
       image: this.state.test_Image || ''
     })
-    console.log(this.state.show);
+    // console.log(this.state.show);
   }
 
 
@@ -163,7 +163,7 @@ class App extends React.Component {
       newDataAdded: dataType,
       dataToShowInForm: this.state.infos[index].data
     })
-    console.log(dataType);
+    // console.log(dataType);
   }
 
   //  To show and hide the modal to add new feild
@@ -173,7 +173,7 @@ class App extends React.Component {
     })
   }
   addNewFeildModal = async () => {
-    console.log("show Modal");
+    // console.log("show Modal");
     await this.setState({
       newFeildAdded: 'Add new feild',
       addData: !this.state.addData
@@ -195,7 +195,7 @@ class App extends React.Component {
     this.setState({
       infos: myOldData
     })
-    console.log(this.state.infos);
+    // console.log(this.state.infos);
     this.addLocally()
   }
 
@@ -258,7 +258,7 @@ class App extends React.Component {
     await this.setState({
       infos: myStateData
     })
-    console.log(this.state.infos);
+    // console.log(this.state.infos);
     this.addLocally()
   }
   addNewObjToFeild = async (index) => {
@@ -321,7 +321,7 @@ class App extends React.Component {
   //  delete object of data
   deleteObj = async (index, objectIndex) => {
     let myArr = this.state.infos
-    console.log(myArr[index].data[objectIndex])
+    // console.log(myArr[index].data[objectIndex])
     myArr[index].data.splice(objectIndex, 1);
     await this.setState({
       infos: myArr

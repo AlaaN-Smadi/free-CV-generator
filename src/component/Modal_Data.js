@@ -15,7 +15,7 @@ class Modal_Data extends React.Component {
     addNewFeildFun = (event) => {
         event.preventDefault();
         let feildName = event.target.feildName.value
-        console.log(feildName)
+        // console.log(feildName)
         this.props.addNewFeild(feildName)
         this.props.hideModalData()
     }
