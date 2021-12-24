@@ -379,6 +379,7 @@ class App extends React.Component {
     await this.setState({
       infos: myArr
     })
+    this.addLocally()
   }
   // change data position inside feilds 
   dataPositionChange = async (feildIndex, dataIndex, type) => {
@@ -399,6 +400,7 @@ class App extends React.Component {
     await this.setState({
       infos: myArr
     })
+    this.addLocally()
   }
 
   render() {
