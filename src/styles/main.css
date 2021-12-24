@@ -58,7 +58,7 @@
     margin-left: auto;
     margin-right: auto;
     font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif;
     padding: 2%;
     border-radius: 30px;
 }
@@ -125,6 +125,7 @@
 }
 .feildsContainer{
     position: relative;
+
 }
 .changeHeadOfFeild{
     display: none;
