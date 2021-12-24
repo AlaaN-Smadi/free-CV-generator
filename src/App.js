@@ -428,7 +428,7 @@ class App extends React.Component {
 
             <Main dataPositionChange={this.dataPositionChange} infoPositionChange={this.infoPositionChange} handleGuide={this.handleClose} dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
-            <Guide_Modal handleClose={this.handleClose} show={this.state.giudeModal} />
+            <Guide_Modal newDataAdded={this.state.newDataAdded} handleClose={this.handleClose} show={this.state.giudeModal} />
 
             <Footer />
 
