@@ -90,8 +90,8 @@ class App extends React.Component {
       newFeildAdded: 'Personal Details',
       index: 0,
       download: false,
-      dataToShowInForm:[],
-      giudeModal:false
+      dataToShowInForm: [],
+      giudeModal: false
     }
   }
 
@@ -357,6 +357,49 @@ class App extends React.Component {
       giudeModal: !this.state.giudeModal
     })
   }
+  // change infos feilds position
+  infoPositionChange = async (idx, type) => {
+    let myArr = this.state.infos;
+
+    if (type == "up") {
+      if (idx !== 0) {
+        let temp = myArr[idx]
+        myArr[idx] = myArr[idx - 1]
+        myArr[idx - 1] = temp
+      }
+
+    } else if (type == "down") {
+      if (idx !== myArr.length - 1) {
+        let temp = myArr[idx]
+        myArr[idx] = myArr[idx + 1]
+        myArr[idx + 1] = temp
+      }
+
+    }
+    await this.setState({
+      infos: myArr
+    })
+  }
+  // change data position inside feilds 
+  dataPositionChange = async (feildIndex, dataIndex, type) => {
+    let myArr = this.state.infos
+    if (type == "up") {
+      if (dataIndex !== 0) {
+        let temp = myArr[feildIndex].data[dataIndex]
+        myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex - 1]
+        myArr[feildIndex].data[dataIndex - 1] = temp
+      }
+    } else if (type == "down") {
+      if (dataIndex !== myArr[feildIndex].data.length - 1) {
+        let temp = myArr[feildIndex].data[dataIndex]
+        myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex + 1]
+        myArr[feildIndex].data[dataIndex + 1] = temp
+      }
+    }
+    await this.setState({
+      infos: myArr
+    })
+  }
 
   render() {
 
@@ -365,7 +408,7 @@ class App extends React.Component {
 
         {
           !this.state.download &&
-          
+
           <div className='formsContainer'>
 
             {
@@ -382,7 +425,7 @@ class App extends React.Component {
 
             <Personal_Image setImage={this.setImage} image={this.state.image} />
 
-            <Main handleGuide={this.handleClose} dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
+            <Main dataPositionChange={this.dataPositionChange} infoPositionChange={this.infoPositionChange} handleGuide={this.handleClose} dataToShowInForm={this.state.dataToShowInForm} submitForm={this.submitForm} deleteObj={this.deleteObj} addNewObjToFeild={this.addNewObjToFeild} addSkillsPersonal={this.addSkillsPersonal} addObj={this.addObj} index={this.state.index} infos={this.state.infos} newDataAdded={this.state.newDataAdded} addNewFeildModal={this.addNewFeildModal} addDataFunc={this.addDataFunc} />
 
             <Guide_Modal handleClose={this.handleClose} show={this.state.giudeModal} />
 

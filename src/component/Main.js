@@ -3,6 +3,12 @@ import '../styles/main.css';
 import { Modal, Button, Form, Col, Row, FloatingLabel } from 'react-bootstrap'
 // BsQuestionCircleFill
 import { BsQuestionCircleFill } from 'react-icons/bs';
+// BsFillArrowUpCircleFill
+// BsArrowDownCircleFill
+// FaRegArrowAltCircleUp
+import { BsArrowDownCircleFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
+import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+
 
 
 class Main extends React.Component {
@@ -193,6 +199,33 @@ class Main extends React.Component {
         }
         console.log("Form Is Empty");
     }
+    // change data position inside feilds 
+    dataPositionChange = async (feildIndex, dataIndex, type) => {
+        // console.log(this.state.feilds)
+        let myArr = this.state.feilds
+        console.log('(------------------------');
+        if (type == "up") {
+            if (dataIndex !== 0) {
+                let temp = myArr[dataIndex]
+                myArr[dataIndex] = myArr[dataIndex - 1]
+                myArr[dataIndex - 1] = temp
+                console.log("change Done");
+            }
+        } else if (type == "down") {
+            if (dataIndex !== myArr.length - 1) {
+                let temp = myArr[dataIndex]
+                myArr[dataIndex] = myArr[dataIndex + 1]
+                myArr[dataIndex + 1] = temp
+                console.log("change Done");
+            }
+        }
+        await this.setState({
+            feilds: myArr
+        })
+        console.log('------------------------)');
+
+        this.props.dataPositionChange(feildIndex, dataIndex, type)
+    }
 
     render() {
 
@@ -203,8 +236,14 @@ class Main extends React.Component {
                     <section className="left_Section">
                         {
                             this.props.infos?.map((infos, idx) => {
-                                return (
+                                return (<div className='feildsContainer'>
                                     <button onClick={() => this.addDataFunc(infos.head, idx)} key={idx} className="info_btn">{infos.head.split("_")[0]}</button>
+                                    <div className='changeHeadOfFeild'>
+
+                                        <span onClick={() => this.infoPositionChange(idx, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                        <span onClick={() => this.infoPositionChange(idx, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                    </div>
+                                </div>
                                 )
                             })
                         }
@@ -225,7 +264,7 @@ class Main extends React.Component {
                                 <>
                                     <Form onSubmit={this.submitForm}>
                                         {
-                                            this.props.infos[this.props.index].data.map((feild, indexFeild) => {
+                                            this.props.infos[this.props.index]?.data.map((feild, indexFeild) => {
                                                 return (
                                                     <>
                                                         <hr className="formLabel" />
@@ -240,10 +279,15 @@ class Main extends React.Component {
                                                             <Form.Control as="textarea" rows={3} type="text" placeholder={feild.descreption} id={`feildDesc${indexFeild}`} name="feildDesc" />
                                                         </Form.Group>
 
+                                                        <div className='changeDataIsideFeilds'>
+                                                            <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
+                                                                Delete ❌
+                                                            </Button>
 
-                                                        <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
-                                                            Delete ❌
-                                                        </Button>
+
+                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                                        </div>
                                                         <hr className="formLabel" />
                                                     </>
                                                 )
@@ -291,13 +335,13 @@ class Main extends React.Component {
                                     <Form onSubmit={this.submitForm}>
                                         {/* <p className="CV_Infos_Title">  </p> */}
                                         {
-                                            this.state.feilds.map((feild, indexFeild) => {
+                                            this.props.infos[this.props.index]?.data?.map((feild, indexFeild) => {
                                                 return (
                                                     <div key={indexFeild}>
                                                         <hr className="formLabel" />
 
                                                         {
-                                                            feild.map((data, idx) => {
+                                                            this.state.feilds[indexFeild]?.map((data, idx) => {
                                                                 return (
                                                                     <div key={data[0]}>
 
@@ -389,12 +433,17 @@ class Main extends React.Component {
                                                             })
                                                         }
                                                         {
-                                                            ((indexFeild > 0) || (this.props.newDataAdded.split("_")[0] == "Skills")) &&
+                                                            ((indexFeild > 0) || (this.props.newDataAdded?.split("_")[0] == "Skills")) &&
                                                             <>
                                                                 <br />
-                                                                <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
-                                                                    Delete ❌
-                                                                </Button>
+                                                                <div className='changeDataIsideFeilds'>
+                                                                    <Button title={`delete this ${this.props.newDataAdded.split("_")[0]}`} onClick={() => this.deleteObj(this.props.index, indexFeild)} variant="danger">
+                                                                        Delete ❌
+                                                                    </Button>
+
+                                                                    <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                                                    <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                                                </div>
                                                             </>
                                                         }
                                                         <hr className="formLabel" />
@@ -428,15 +477,15 @@ class Main extends React.Component {
                     </section>
 
 
-                   
+
                     {/* <!-- mainFooter --> */}
                     <ins class="adsbygoogle"
-                        style={{display:"block"}}
+                        style={{ display: "block" }}
                         data-ad-client="ca-pub-8379054609541639"
                         data-ad-slot="3871957559"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                    
+
                 </div>
             </>
         )

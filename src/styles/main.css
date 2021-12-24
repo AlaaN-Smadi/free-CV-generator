@@ -86,6 +86,9 @@
     transition: 0.3s;
 }
 
+.feildsContainer:hover .changeHeadOfFeild{
+    display: block;
+}
 
 .info_Title{
     font-size: larger;
@@ -120,6 +123,41 @@
     width: 42%;
     display: inline-block;
 }
+.feildsContainer{
+    position: relative;
+}
+.changeHeadOfFeild{
+    display: none;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    animation-name: changePlaceOfItems;
+    animation-duration: 0.5s;
+}
+.changeToUp{
+    border-radius: 100%;
+    color: green;
+    font-size: x-large;
+}
+.changeToDown{
+    border-radius: 100%;
+    color: red;
+    font-size: x-large;
+}
+
+.changeToUp:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.changeToDown:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.changeDataIsideFeilds span{
+    float: right;
+    margin: 3px;
+}
 
 @media screen and (max-width: 400px) {
     .info_btn{
@@ -140,3 +178,22 @@
         font-size: 20px;
     }
   }
+
+  @media screen and (max-width: 1000px) {
+    .changeHeadOfFeild{
+        right: -37px;
+        top: 0;
+    }
+
+}
+
+@keyframes changePlaceOfItems {
+    0%{
+        top: 3px;
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+        top: 0px;
+    }
+}
