@@ -120,7 +120,7 @@ class Main extends React.Component {
                 })
                 const obj = Object.fromEntries(feild);
                 // console.log(obj);
-                // data.push(obj)
+                data.push(obj)
 
             })
 
