@@ -141,6 +141,7 @@ class App extends React.Component {
       })
       // console.log("this.state.image");
       let imageObject = { img: a }
+      localStorage.removeItem("image");
       localStorage.setItem("image", JSON.stringify(imageObject))
     }
 
@@ -215,7 +216,7 @@ class App extends React.Component {
           Technical_Skills: "",
           Description: ""
         };
-        index = 2
+        index = this.state.index
         break;
       case 'Education':
         myNewObj = {
@@ -226,7 +227,7 @@ class App extends React.Component {
           Technical__Skills: "",
           description: ""
         }
-        index = 3
+        index = this.state.index
         break;
       case 'Certificate':
         myNewObj = {
@@ -234,7 +235,7 @@ class App extends React.Component {
           Date: "",
           Technical_skills: ""
         };
-        index = 4
+        index = this.state.index
         break;
       default:
         break;
@@ -251,9 +252,9 @@ class App extends React.Component {
     let myStateData = this.state.infos
     if (head === "Skills") {
       myNewObj = { new_Skill: "" }
-      myStateData[5].data.push(myNewObj)
+      myStateData[this.state.index].data.push(myNewObj)
     } else {
-      myStateData[0].data.push(myNewObj)
+      myStateData[this.state.index].data.push(myNewObj)
     }
     await this.setState({
       infos: myStateData
@@ -388,18 +389,32 @@ class App extends React.Component {
         let temp = myArr[feildIndex].data[dataIndex]
         myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex - 1]
         myArr[feildIndex].data[dataIndex - 1] = temp
+
+
       }
     } else if (type === "down") {
       if (dataIndex !== myArr[feildIndex].data.length - 1) {
         let temp = myArr[feildIndex].data[dataIndex]
         myArr[feildIndex].data[dataIndex] = myArr[feildIndex].data[dataIndex + 1]
         myArr[feildIndex].data[dataIndex + 1] = temp
+
+
       }
     }
     await this.setState({
       infos: myArr
     })
     this.addLocally()
+
+    if (type === "down") {
+      await this.setState({
+        index: this.state.index + 1
+      })
+    } else if (type === "up") {
+      await this.setState({
+        index: this.state.index - 1
+      })
+    }
   }
 
   render() {
@@ -430,7 +445,7 @@ class App extends React.Component {
 
             <Guide_Modal newDataAdded={this.state.newDataAdded} handleClose={this.handleClose} show={this.state.giudeModal} />
 
-            <Footer />
+            {/* <Footer /> */}
 
             <CheckoutButton downloadPage={this.downloadPage} deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
 

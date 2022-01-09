@@ -564,16 +564,6 @@ class Main extends React.Component {
                         </div>
                     </section>
 
-
-
-                    {/* <!-- mainFooter --> */}
-                    <ins class="adsbygoogle"
-                        style={{ display: "block" }}
-                        data-ad-client="ca-pub-8379054609541639"
-                        data-ad-slot="3871957559"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"></ins>
-
                 </div>
             </>
         )
