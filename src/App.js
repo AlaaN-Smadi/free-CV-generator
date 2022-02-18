@@ -12,6 +12,7 @@ import Modal_Data from './component/Modal_Data';
 import Swal from 'sweetalert2'
 import DownloadResume from './component/downloadResume'
 import Guide_Modal from './component/Guide_Modal'
+import SupportUs from './component/SupportUs';
 
 
 class App extends React.Component {
@@ -90,7 +91,8 @@ class App extends React.Component {
       index: 0,
       download: false,
       dataToShowInForm: [],
-      giudeModal: false
+      giudeModal: false,
+      support: false
     }
   }
 
@@ -119,6 +121,14 @@ class App extends React.Component {
         image: image.img
       })
     }
+  }
+  // show donate
+
+  donate = (con) => {
+    this.setState({
+      support: con
+    })
+    console.log("5020254202520");
   }
 
   // To upload Image and set it
@@ -162,7 +172,7 @@ class App extends React.Component {
     await this.setState({
       index: index,
       newDataAdded: dataType,
-      dataToShowInForm: this.state.infos[index].data
+      dataToShowInForm: this.state?.infos[index]?.data
     })
     // console.log(dataType);
   }
@@ -360,12 +370,19 @@ class App extends React.Component {
   // change infos feilds position
   infoPositionChange = async (idx, type) => {
     let myArr = this.state.infos;
+    await this.setState({
+      infos: [],
+    })
 
     if (type === "up") {
       if (idx !== 0) {
         let temp = myArr[idx]
         myArr[idx] = myArr[idx - 1]
         myArr[idx - 1] = temp
+
+
+
+        // window.location.reload();
       }
 
     } else if (type === "down") {
@@ -373,17 +390,23 @@ class App extends React.Component {
         let temp = myArr[idx]
         myArr[idx] = myArr[idx + 1]
         myArr[idx + 1] = temp
+
+        // window.location.reload();
       }
 
     }
     await this.setState({
-      infos: myArr
+      infos: myArr,
     })
     this.addLocally()
+    
   }
   // change data position inside feilds 
   dataPositionChange = async (feildIndex, dataIndex, type) => {
     let myArr = this.state.infos
+    await this.setState({
+      infos: []
+    })
     if (type === "up") {
       if (dataIndex !== 0) {
         let temp = myArr[feildIndex].data[dataIndex]
@@ -406,15 +429,7 @@ class App extends React.Component {
     })
     this.addLocally()
 
-    if (type === "down") {
-      await this.setState({
-        index: this.state.index + 1
-      })
-    } else if (type === "up") {
-      await this.setState({
-        index: this.state.index - 1
-      })
-    }
+
   }
 
   render() {
@@ -447,7 +462,7 @@ class App extends React.Component {
 
             {/* <Footer /> */}
 
-            <CheckoutButton downloadPage={this.downloadPage} deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
+            <CheckoutButton donate={this.donate} downloadPage={this.downloadPage} deleteAllDataAlert={this.deleteAllDataAlert} downloadFunc={this.downloadFunc} download={this.props.download} />
 
           </div>
         }
@@ -456,6 +471,10 @@ class App extends React.Component {
           this.state.download &&
           <DownloadResume downloadPage={this.downloadPage} />
         }
+
+
+   
+          <SupportUs handleClose={this.donate} show={this.state.support} />
 
       </div>
     )

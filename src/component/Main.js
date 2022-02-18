@@ -21,12 +21,23 @@ class Main extends React.Component {
             month: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             year: [],
             feilds: [],
-
+            // support: false,
         }
     }
 
+    // show support 
+
+
     renderMapData = () => {
         let myArrData = []
+        
+        this.setState({
+            feilds: [],
+            year: [],
+            infosMap: []
+        })
+
+
         for (let i = 0; i < this.props.infos[this.props.index].data.length; i++) {
             let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
             myArrData.push(myFeilds)
@@ -60,6 +71,10 @@ class Main extends React.Component {
 
         let myGIF = document.getElementById('myWaitingGIF')
         myGIF.style.display = 'block'
+
+        await this.setState({
+            infosMap: []
+        })
 
         this.emptyTheForm();
         await this.props.addDataFunc(dataType, idx)
@@ -209,12 +224,15 @@ class Main extends React.Component {
         // console.log("Form Is Empty");
     }
     // change data position inside feilds 
-    dataPositionChange = async (feildIndex, dataIndex, type) => {
+    dataPositionChange = async (feildIndex, dataIndex, type, dataType, idx) => {
 
         let myGIF = document.getElementById('myWaitingGIF')
         myGIF.style.display = 'block'
         // console.log(this.state.feilds)
         let myArr = this.state.feilds
+        await this.setState({
+            feilds: []
+        })
         // console.log('(------------------------');
         if (type === "up") {
             if (dataIndex !== 0) {
@@ -234,6 +252,7 @@ class Main extends React.Component {
         await this.setState({
             feilds: myArr
         })
+        // this.addDataFunc(dataType, idx)
         // console.log('------------------------)');
 
         // if (this.props.newDataAdded.split("_")[0] === "Skills") {
@@ -247,16 +266,18 @@ class Main extends React.Component {
         // }
         // 
         // 
-
+// ----------------------------------------------------------
         if (this.props.index > 1 && this.props.index < 6) {
 
             this.state.feilds.forEach((feild, idx) => {
 
                 feild.forEach((id) => {
-                   
+
                     if (`${id[0]}${idx}`.slice(0, 4) === "Date" || `${id[0]}${idx}`.slice(0, 4) === "Star" || `${id[0]}${idx}`.slice(0, 4) === "End_") {
-                        // let date = `${document.getElementById(`${id[0]}${idx}`).value}-${document.getElementById(`${id[0]}${idx}Year`).value}`
-                        // id[1] = date
+                        let date = `${document.getElementById(`${id[0]}${idx}`).value}-${document.getElementById(`${id[0]}${idx}Year`).value}`
+                        id[1] = date
+                        console.log(date);
+                        // document.getElementById(`${id[0]}${idx}`).value = id[1]
 
                     } else {
                         document.getElementById(`${id[0]}${idx}`).value = id[1]
@@ -268,12 +289,12 @@ class Main extends React.Component {
             this.state.feilds.forEach((feild, idx) => {
                 feild.forEach((id) => {
                     if (idx === 0) {
-                        document.getElementById(`${id[0]}${idx}`).value = id[1] 
+                        document.getElementById(`${id[0]}${idx}`).value = id[1]
                     } else {
                         let swap = id[0]
-                        
+
                         document.getElementById(`${swap}${idx}`).value = id[0]
-                        document.getElementById(`${swap}${idx}value`).value = id[1] 
+                        document.getElementById(`${swap}${idx}value`).value = id[1]
 
                     }
 
@@ -295,12 +316,26 @@ class Main extends React.Component {
 
             })
 
-        } 
+        }
         // 
         // 
 
         this.props.dataPositionChange(feildIndex, dataIndex, type)
         myGIF.style.display = 'none'
+    }
+    // change info data inside feilds
+    infoPositionChange = async (feildIndex, type, headOfIndex) => {
+        
+        if(type === "up" && feildIndex !== 0){
+            this.props.infoPositionChange(feildIndex, type);
+            feildIndex -= 1
+            this.addDataFunc(headOfIndex, feildIndex);
+        }else if(feildIndex !== this.state.infosMap.length - 1 && type === "down"){
+            this.props.infoPositionChange(feildIndex, type);
+            feildIndex += 1
+            this.addDataFunc(headOfIndex, feildIndex);
+        }
+
     }
 
     render() {
@@ -315,12 +350,12 @@ class Main extends React.Component {
                     <section className="left_Section">
                         {
                             this.props.infos?.map((infos, idx) => {
-                                return (<div className='feildsContainer'>
+                                return (<div key={idx} className='feildsContainer'>
                                     <button onClick={() => this.addDataFunc(infos.head, idx)} key={idx} className="info_btn">{infos.head.split("_")[0]}</button>
                                     <div className='changeHeadOfFeild'>
 
-                                        <span onClick={() => this.props.infoPositionChange(idx, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
-                                        <span onClick={() => this.props.infoPositionChange(idx, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                        <span onClick={() => this.infoPositionChange(idx, "up", infos.head)} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                        <span onClick={() => this.infoPositionChange(idx, "down", infos.head)} className='changeToDown'> <BsArrowDownCircleFill /> </span>
                                     </div>
                                 </div>
                                 )
@@ -345,7 +380,7 @@ class Main extends React.Component {
                                         {
                                             this.props.infos[this.props.index]?.data.map((feild, indexFeild) => {
                                                 return (
-                                                    <>
+                                                    <div key={indexFeild}>
                                                         <hr className="formLabel" />
                                                         <Form.Group className="mb-3" id="formBasicEmail">
                                                             <Form.Label className="formLabel" htmlFor="feildName"> {this.props.newDataAdded.split("_")[0]} Name </Form.Label>
@@ -364,11 +399,11 @@ class Main extends React.Component {
                                                             </Button>
 
 
-                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
-                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up", this.props.newDataAdded.split("_")[0], this.props.index)} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                                            <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down", this.props.newDataAdded.split("_")[0], this.props.index)} className='changeToDown'> <BsArrowDownCircleFill /> </span>
                                                         </div>
                                                         <hr className="formLabel" />
-                                                    </>
+                                                    </div>
                                                 )
                                             })
 
@@ -422,7 +457,7 @@ class Main extends React.Component {
                                                         {
                                                             this.state.feilds[indexFeild]?.map((data, idx) => {
                                                                 return (
-                                                                    <div key={data[0]}>
+                                                                    <div key={idx}>
 
 
                                                                         {
@@ -481,9 +516,9 @@ class Main extends React.Component {
                                                                                         <FloatingLabel id="floatingSelectGrid" label="Month">
                                                                                             <Form.Select id={`${data[0]}${indexFeild}`} defaultValue={`${data[1].split("-")[0]}`} aria-label="Floating label select example">
                                                                                                 {
-                                                                                                    this.state.month.map(month => {
+                                                                                                    this.state.month.map((month, monthIndex) => {
                                                                                                         return (
-                                                                                                            <option value={month}> {month} </option>
+                                                                                                            <option key={monthIndex} value={month}> {month} </option>
                                                                                                         )
                                                                                                     })
                                                                                                 }
@@ -493,10 +528,10 @@ class Main extends React.Component {
                                                                                     <Col md>
                                                                                         <FloatingLabel id="floatingSelectGrid" label="Year">
                                                                                             <Form.Select id={`${data[0]}${indexFeild}Year`} defaultValue={`${data[1].split("-")[1]}`} aria-label="Floating label select example">
-                                                                                                {this.state.year.map(year => {
+                                                                                                {this.state.year.map((year, yesrIndex) => {
                                                                                                     return (
                                                                                                         <>
-                                                                                                            <option value={year}> {year} </option>
+                                                                                                            <option key={yesrIndex} value={year}> {year} </option>
 
                                                                                                         </>
                                                                                                     )
@@ -527,10 +562,10 @@ class Main extends React.Component {
                                                                     </Button>
                                                                     {
                                                                         (this.props.index !== 0 || indexFeild > 1) &&
-                                                                        <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up")} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
+                                                                        <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "up", this.props.newDataAdded.split("_")[0], this.props.index)} className='changeToUp'> <BsFillArrowUpCircleFill /> </span>
 
                                                                     }
-                                                                    <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down")} className='changeToDown'> <BsArrowDownCircleFill /> </span>
+                                                                    <span onClick={() => this.dataPositionChange(this.props.index, indexFeild, "down", this.props.newDataAdded.split("_")[0], this.props.index)} className='changeToDown'> <BsArrowDownCircleFill /> </span>
                                                                 </div>
                                                             </>
                                                         }
