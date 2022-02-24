@@ -38,7 +38,7 @@ class Main extends React.Component {
         })
 
 
-        for (let i = 0; i < this.props.infos[this.props.index].data.length; i++) {
+        for (let i = 0; i < this.props?.infos[this.props?.index]?.data?.length; i++) {
             let myFeilds = Object.entries(this.props.infos[this.props.index].data[i])
             myArrData.push(myFeilds)
         }
@@ -69,6 +69,7 @@ class Main extends React.Component {
     addDataFunc = async (dataType, idx) => {
         // console.log("hhhhhhhhhhhhhhhhhhh");
 
+        if(this.props.infos){
         let myGIF = document.getElementById('myWaitingGIF')
         myGIF.style.display = 'block'
 
@@ -87,6 +88,7 @@ class Main extends React.Component {
         }
         // console.log(this.props.dataToShowInForm);
         myGIF.style.display = 'none'
+        }
     }
     // Add new object to the feild
     addObj = (head) => {
@@ -326,14 +328,18 @@ class Main extends React.Component {
     // change info data inside feilds
     infoPositionChange = async (feildIndex, type, headOfIndex) => {
         
-        if(type === "up" && feildIndex !== 0){
-            this.props.infoPositionChange(feildIndex, type);
-            feildIndex -= 1
-            this.addDataFunc(headOfIndex, feildIndex);
-        }else if(feildIndex !== this.state.infosMap.length - 1 && type === "down"){
-            this.props.infoPositionChange(feildIndex, type);
-            feildIndex += 1
-            this.addDataFunc(headOfIndex, feildIndex);
+        let myIndex = feildIndex;
+        if(type === "up" && myIndex > 0){
+            await this.props.infoPositionChange(myIndex, type);
+            myIndex -= 1
+            this.addDataFunc(headOfIndex, myIndex);
+        }else if((myIndex !== (this.state.infosMap.length - 1)) && type === "down"){
+            console.log("myIndex", myIndex);
+            await this.props.infoPositionChange(myIndex, type).then(()=>{
+                myIndex += 1
+                this.addDataFunc(headOfIndex, myIndex);
+
+            })
         }
 
     }

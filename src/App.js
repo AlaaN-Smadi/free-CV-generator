@@ -370,34 +370,42 @@ class App extends React.Component {
   // change infos feilds position
   infoPositionChange = async (idx, type) => {
     let myArr = this.state.infos;
-    await this.setState({
-      infos: [],
-    })
+   
 
     if (type === "up") {
       if (idx !== 0) {
+        
+        await this.setState({
+          infos: [],
+        })
+
+        
         let temp = myArr[idx]
         myArr[idx] = myArr[idx - 1]
         myArr[idx - 1] = temp
 
-
-
+        
         // window.location.reload();
       }
 
     } else if (type === "down") {
-      if (idx !== myArr.length - 1) {
+      if (idx !==( myArr.length - 1)) {
         let temp = myArr[idx]
         myArr[idx] = myArr[idx + 1]
         myArr[idx + 1] = temp
 
         // window.location.reload();
+       
       }
 
     }
+    
     await this.setState({
       infos: myArr,
     })
+    
+    console.log("myArr", myArr);
+    
     this.addLocally()
     
   }
