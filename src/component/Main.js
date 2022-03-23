@@ -390,13 +390,13 @@ class Main extends React.Component {
                                                         <hr className="formLabel" />
                                                         <Form.Group className="mb-3" id="formBasicEmail">
                                                             <Form.Label className="formLabel" htmlFor="feildName"> {this.props.newDataAdded.split("_")[0]} Name </Form.Label>
-                                                            <Form.Control type="text" id={`feildName${indexFeild}`} placeholder={feild.name} name="feildName" />
+                                                            <Form.Control type="text" id={`feildName${indexFeild}`} defaultValue={feild.name} name="feildName" />
 
                                                         </Form.Group>
 
                                                         <Form.Group className="mb-3" id="formBasicPassword">
                                                             <Form.Label className="formLabel" htmlFor="feildDesc"> {this.props.newDataAdded.split("_")[0]} Description </Form.Label>
-                                                            <Form.Control as="textarea" rows={3} type="text" placeholder={feild.descreption} id={`feildDesc${indexFeild}`} name="feildDesc" />
+                                                            <Form.Control as="textarea" rows={3} type="text" defaultValue={feild.descreption} id={`feildDesc${indexFeild}`} name="feildDesc" />
                                                         </Form.Group>
 
                                                         <div className='changeDataIsideFeilds'>
