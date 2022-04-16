@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://alaan-smadi.github.io/free-CV-generator/",
+  
   "dependencies": {
     "@ctrl/react-adsense": "^1.4.0",
     "@react-icons/all-files": "^4.1.0",

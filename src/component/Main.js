@@ -543,7 +543,7 @@ class Main extends React.Component {
                                                                                                     )
                                                                                                 })}
                                                                                                 {
-                                                                                                    (data[0] === "End_Date") &&
+                                                                                                    (data[0] === "End_Date" || data[0] === "End__Date") &&
                                                                                                     <option value="Present" > Present </option>
                                                                                                 }
                                                                                             </Form.Select>
